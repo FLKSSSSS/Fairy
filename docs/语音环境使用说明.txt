@@ -1,0 +1,11 @@
+﻿Fairy 本地语音环境使用说明
+此 ZIP 解压后只有 voice-runtime。Python、GPT-SoVITS 和 Fairy 模型均已包含，适用于 Windows x64。
+例如解压到 F:\fairy音频依赖，最终路径为 F:\fairy音频依赖\voice-runtime\start_tts_portable.ps1。
+在 PowerShell 执行：
+powershell -NoProfile -ExecutionPolicy Bypass -File 'F:\fairy音频依赖\voice-runtime\start_tts_portable.ps1' -Device cpu -StartupTimeoutSeconds 180
+确认 http://127.0.0.1:9880/docs 可以访问，再到已经安装 dsh-fairy-voice 的 DSH 设置中开启朗读/自动朗读。
+模型 ZIP 自身不会安装 DSH 语音插件，也不会安装 DSH 主程序。
+auto 可自动选择设备；本次不重新验证 GPU。首次加载等待更久，查看 voice-runtime\logs。端口冲突不要杀无关进程。
+停止：powershell -NoProfile -ExecutionPolicy Bypass -File 'F:\fairy音频依赖\voice-runtime\stop_tts_portable.ps1'
+移动目录后重新运行启动脚本，动态配置使用新路径；不要只移动模型或 Python。基础模型和程序许可见各目录原 LICENSE/notice。
+完整说明见轻量插件 ZIP 中的“使用说明.txt”。本包不含个人凭据、对话或语音简报 API Key。

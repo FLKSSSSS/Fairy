@@ -1,0 +1,106 @@
+{
+  "name": "dsh-fairy-orb",
+  "version": "1.1.0",
+  "type": "module",
+  "description": "Fairy floating eye and standalone Fairy agent preset for DSH 0.2.0-rc.2 (Windows x64 offline runtime).",
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "cordis",
+    "plugin",
+    "computer-use",
+    "floating-ball",
+    "desktop"
+  ],
+  "homepage": "https://github.com/mini-yifan/dsh-orb-cordis#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mini-yifan/dsh-orb-cordis.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mini-yifan/dsh-orb-cordis/issues"
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./client": "./client.js",
+    "./host": {
+      "types": "./dist/host/index.d.ts",
+      "default": "./dist/host/index.js"
+    },
+    "./computer-use": {
+      "types": "./dist/computer-use/index.d.ts",
+      "default": "./dist/computer-use/index.js"
+    },
+    "./computer-use/code-agent": {
+      "types": "./dist/computer-use/code-agent.d.ts",
+      "default": "./dist/computer-use/code-agent.js"
+    },
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json",
+    "./fairy-runtime": "./preset/runtime/index.js",
+    "./fairy-safety-gate": "./preset/runtime/safety-gate.js"
+  },
+  "files": [
+    "lib",
+    "client.js",
+    "dist",
+    "cordis.patch.yml",
+    "preset",
+    "runtime",
+    "README.txt",
+    "PROVENANCE.txt"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "4.0.4",
+    "@deepseek-ai/dsh-agent": "0.2.0-rc.2",
+    "@deepseek-ai/dsh-api-session-controller": "0.2.0-rc.2",
+    "@deepseek-ai/dsh-attachment": "0.2.0-rc.2",
+    "@deepseek-ai/dsh-brand": "0.2.0-rc.2",
+    "@deepseek-ai/dsh-home-paths": "0.2.0-rc.2",
+    "@deepseek-ai/dsh-llm": "0.2.0-rc.2",
+    "@deepseek-ai/dsh-session": "0.2.0-rc.2",
+    "@deepseek-ai/dsh-session-projection": "0.2.0-rc.2",
+    "@deepseek-ai/dsh-system-prompt": "0.2.0-rc.2",
+    "@deepseek-ai/dsh-tools": "0.2.0-rc.2",
+    "@deepseek-ai/dsh-user-approval": "0.2.0-rc.2",
+    "@deepseek-ai/dsh-user-questions": "0.2.0-rc.2",
+    "@deepseek-ai/schemastery": "3.18.4",
+    "@deepseek-ai/dsh": "0.2.0-rc.2"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/dsh-session-projection": {
+      "optional": true
+    }
+  },
+  "dsh": {
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-settings"
+      ],
+      "platform": "web"
+    },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "os": [
+    "win32"
+  ],
+  "cpu": [
+    "x64"
+  ],
+  "dependencies": {
+    "koffi": "3.3.1",
+    "@koromix/koffi-win32-x64": "3.3.1"
+  },
+  "bundledDependencies": [
+    "koffi",
+    "@koromix/koffi-win32-x64"
+  ]
+}

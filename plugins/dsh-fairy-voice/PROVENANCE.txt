@@ -1,0 +1,4 @@
+基于本机 Fairy 已修复版本拆分，构建日期 2026-10-09。目标 DeepSeek Harness 0.2.0-rc.2。
+UI 与语音作者资源及共享契约按原样保留；没有新授予第三方角色/音频/模型的分发许可，请自行确认用途许可。
+Orb 基于 dsh-orb (mini-yifan/dsh-orb-cordis)，原 MIT LICENSE 保留；Electron LICENSE 与 Chromium notices 位于 runtime/electron。
+Node 第三方依赖的原 LICENSE 保留在 node_modules；Windows x64 Koffi 随包，不包含其他平台二进制。

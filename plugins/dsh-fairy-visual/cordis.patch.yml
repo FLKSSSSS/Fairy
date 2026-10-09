@@ -1,0 +1,7 @@
+- insert:
+    - id: fairy-visual
+      name: dsh-fairy-visual
+      inject:
+        - clientModules
+    - id: fairy-identity
+      name: dsh-fairy-visual/identity

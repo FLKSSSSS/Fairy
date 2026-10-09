@@ -1,0 +1,13 @@
+node_modules/
+**/runtime/electron/
+*.tgz
+*.zip
+*.zip.[0-9][0-9][0-9]
+*.partial
+.env
+.env.*
+!.env.example
+voice-brain.json
+*.pid
+logs/
+DSH_HOME/

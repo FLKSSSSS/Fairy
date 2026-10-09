@@ -1,0 +1,5 @@
+- insert:
+    - id: fairy-voice
+      name: dsh-fairy-voice
+      inject:
+        - clientModules

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "outputName": "Fairy-Voice-Runtime-Windows-x64.zip",
+  "bytes": 5861894841,
+  "sha256": "369ebb75a2764ce8821cb546fb93f84c6b69b5383caf38cd9e61dd6c7217dac3",
+  "parts": [
+    {
+      "name": "Fairy-Voice-Runtime-Windows-x64.zip.001",
+      "bytes": 2000000000,
+      "sha256": "829f6b6ad013690eaeeb57dc8df8aa59d5df240ff5013872ba30f753a0a7c131"
+    },
+    {
+      "name": "Fairy-Voice-Runtime-Windows-x64.zip.002",
+      "bytes": 2000000000,
+      "sha256": "404c282e9da2a5df19fa61db30387f294f76df03cccb53816c3047f5543af437"
+    },
+    {
+      "name": "Fairy-Voice-Runtime-Windows-x64.zip.003",
+      "bytes": 1861894841,
+      "sha256": "605d716ab50f26f84c33be8a65352e3396ecd26c439d7298f426b963febea62f"
+    }
+  ]
+}
