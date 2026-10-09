@@ -459,6 +459,23 @@ html[data-dsh-fairy-visual],html[data-dsh-fairy-visual] body{color-scheme:dark}h
 		appendSection("composer", `html[data-dsh-fairy-visual] [data-dsh-fairy-composer-dock="true"] [data-dsh-fairy-composer-voice-control="true"]{border:2px solid transparent!important;border-radius:999px!important;background:linear-gradient(#30353a,#30353a) padding-box,linear-gradient(135deg,#555f68 0%,#4e5861 48%,#3d444b 100%) border-box!important;box-shadow:-4px -4px 9px rgba(255,255,255,.06),5px 6px 13px rgba(0,0,0,.13),inset 1px 1px 0 rgba(255,255,255,.03),inset -1px -1px 0 rgba(0,0,0,.13)!important}html[data-dsh-fairy-visual][data-dsh-fairy-theme="light"] [data-dsh-fairy-composer-dock="true"] [data-dsh-fairy-composer-voice-control="true"]{background:linear-gradient(#f4f5f6,#f4f5f6) padding-box,linear-gradient(135deg,#dfe5e9 0%,#dce2e6 48%,#c1c8ce 100%) border-box!important;box-shadow:-4px -4px 9px rgba(255,255,255,.46),5px 6px 13px rgba(52,63,73,.10),inset 1px 1px 0 rgba(255,255,255,.58),inset -1px -1px 0 rgba(52,63,73,.08)!important}`);
 		appendSection("composer", `html[data-dsh-fairy-visual][data-dsh-fairy-theme="dark"] [data-dsh-fairy-composer-dock="true"] [data-dsh-fairy-composer-voice-control="true"]{border:2px solid transparent!important;background:linear-gradient(#30353a,#30353a) padding-box,linear-gradient(135deg,#555f68 0%,#4e5861 48%,#3d444b 100%) border-box!important;box-shadow:-4px -4px 9px rgba(255,255,255,.06),5px 6px 13px rgba(0,0,0,.13),inset 1px 1px 0 rgba(255,255,255,.03),inset -1px -1px 0 rgba(0,0,0,.13)!important}html[data-dsh-fairy-visual][data-dsh-fairy-theme="light"] [data-dsh-fairy-composer-dock="true"] [data-dsh-fairy-composer-voice-control="true"]{border:2px solid transparent!important;background:linear-gradient(#f4f5f6,#f4f5f6) padding-box,linear-gradient(135deg,#dfe5e9 0%,#dce2e6 48%,#c1c8ce 100%) border-box!important;box-shadow:-4px -4px 9px rgba(255,255,255,.46),5px 6px 13px rgba(52,63,73,.10),inset 1px 1px 0 rgba(255,255,255,.58),inset -1px -1px 0 rgba(52,63,73,.08)!important}`);
 		appendSection("hero", `.dsh-fairy-hero-host{width:100vw}.dsh-fairy-hero-projection-svg{top:-2px;transform:translateX(2px)}.dsh-fairy-hero-sub{transform:translateY(-8px)}.dsh-fairy-hero-sub::before,.dsh-fairy-hero-sub::after{width:240px}@media(max-width:520px){.dsh-fairy-hero-projection-svg{top:1px}.dsh-fairy-hero-sub{transform:translateX(2px)}.dsh-fairy-hero-sub::before,.dsh-fairy-hero-sub::after{width:170px}}`);
+		// Give the live branch its own line; keep projection hints branch-free.
+		appendSection("composer", `html[data-dsh-fairy-visual] [data-dsh-fairy-composer-dock="true"] [data-dsh-fairy-composer-workspace="true"][data-dsh-fairy-composer-has-branch="true"]{left:12px!important;top:6px!important;width:calc(var(--dsh-fairy-composer-wing,176px) - 24px)!important;height:auto!important;display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:2px!important}
+html[data-dsh-fairy-visual] [data-dsh-fairy-composer-has-branch="true"] [data-dsh-fairy-composer-workspace-control="true"],html[data-dsh-fairy-visual] [data-dsh-fairy-composer-has-branch="true"] [data-dsh-fairy-composer-mode-control="true"],html[data-dsh-fairy-visual] [data-dsh-fairy-composer-has-branch="true"] [data-dsh-fairy-composer-branch-control="true"]{position:relative!important;inset:auto!important;flex:none!important;width:max-content!important;max-width:100%!important;height:24px!important;min-height:24px!important;margin:0!important;pointer-events:auto!important}
+html[data-dsh-fairy-visual] [data-dsh-fairy-composer-has-branch="true"] [data-dsh-fairy-composer-workspace-control="true"]{order:0!important}
+html[data-dsh-fairy-visual] [data-dsh-fairy-composer-has-branch="true"] [data-dsh-fairy-composer-branch-control="true"]{order:1!important;z-index:7!important}
+html[data-dsh-fairy-visual] [data-dsh-fairy-composer-has-branch="true"] [data-dsh-fairy-composer-mode-control="true"]{order:2!important}
+html[data-dsh-fairy-visual] [data-dsh-fairy-composer-has-branch="true"] [data-dsh-fairy-composer-mode-control="true"]>button,html[data-dsh-fairy-visual] [data-dsh-fairy-composer-has-branch="true"] [data-dsh-fairy-composer-branch-control="true"] [data-gitgraph-chip="true"]{height:24px!important;min-height:24px!important;max-width:100%!important;padding-top:0!important;padding-bottom:0!important}
+html[data-dsh-fairy-visual] [data-dsh-fairy-composer-has-branch="true"] [data-slot="conversation.hero.workspace"]>span:empty{display:none!important}
+html[data-dsh-fairy-visual] [data-dsh-fairy-composer-branch-control="true"] [data-gitgraph-popover="true"]{top:auto!important;bottom:calc(100% + 8px)!important;max-height:min(360px,calc(100vh - 160px))!important}
+html[data-dsh-fairy-visual] [data-dsh-fairy-composer-workspace-projection="true"] [data-gitgraph-chip-anchor]{display:none!important}
+`);
+		// The waveform is decorative; expose the real volume thumb for mouse/keyboard use.
+		appendSection("composer", `html[data-dsh-fairy-visual] [data-dsh-fairy-composer-dock="true"] [data-dsh-fairy-composer-voice-control="true"] [data-dsh-fairy-volume-input="true"]{opacity:1!important;color:inherit!important}
+html[data-dsh-fairy-visual] [data-dsh-fairy-composer-dock="true"] [data-dsh-fairy-volume-input="true"]::-webkit-slider-runnable-track{background:transparent!important}
+html[data-dsh-fairy-visual] [data-dsh-fairy-composer-dock="true"] [data-dsh-fairy-volume-input="true"]::-moz-range-track,html[data-dsh-fairy-visual] [data-dsh-fairy-composer-dock="true"] [data-dsh-fairy-volume-input="true"]::-moz-range-progress{background:transparent!important}
+@media(max-width:620px){html[data-dsh-fairy-visual] [data-dsh-fairy-composer-dock="true"] [data-dsh-fairy-composer-workspace="true"][data-dsh-fairy-composer-has-branch="true"]{display:none!important}}
+`);
 		el.textContent = cssSections.map(({ css }) => css).join("");
 		(document.head || document.documentElement).appendChild(el);
 	}
@@ -1710,6 +1727,7 @@ html[data-dsh-fairy-visual],html[data-dsh-fairy-visual] body{color-scheme:dark}h
 		const { OFFICIAL_ATTRIBUTES, inputScroll, sendButton, contextControl, voiceControl, commandControl, accessControl, modelControl, reasoningControl, modelAndReasoningShareNode, workspaceControl } = require_dom_adapter();
 		const { attachmentSlot, attachmentRail } = require_composer_attachments();
 		const COMPOSER_ATTR = "data-dsh-fairy-composer-dock";
+		const BRANCH_SELECTOR = "[data-gitgraph-chip-anchor],[data-dsh-plugin=\"git-graph\"][data-dsh-part=\"chip\"]";
 		const MARKER_ATTRS = [
 			COMPOSER_ATTR,
 			"data-dsh-fairy-composer-row",
@@ -1733,7 +1751,9 @@ html[data-dsh-fairy-visual],html[data-dsh-fairy-visual] body{color-scheme:dark}h
 			"data-dsh-fairy-composer-command-control",
 			"data-dsh-fairy-composer-access-control",
 			"data-dsh-fairy-composer-workspace-control",
-			"data-dsh-fairy-composer-mode-control"
+			"data-dsh-fairy-composer-mode-control",
+			"data-dsh-fairy-composer-branch-control",
+			"data-dsh-fairy-composer-has-branch"
 		];
 		function clearMarker(node, name) {
 			if (node?.isConnected) node.removeAttribute(name);
@@ -1811,7 +1831,12 @@ html[data-dsh-fairy-visual],html[data-dsh-fairy-visual] body{color-scheme:dark}h
 				[...stack.children].filter((node) => node !== barHost && node !== workspaceRow).forEach((node) => mark(node, "data-dsh-fairy-composer-chrome"));
 				mark(workspaceRow, "data-dsh-fairy-composer-workspace");
 				mark(workspaceButton, "data-dsh-fairy-composer-workspace-control");
-				const modeButton = workspaceRow ? [...workspaceRow.querySelectorAll("button")].find((button) => button !== workspaceButton) : null;
+				// Branch chips are third-party context controls, not Agent preset buttons.
+				// Prefer the official preset slot and never classify a Git button as mode.
+				const branches = [...workspaceRow?.querySelectorAll(BRANCH_SELECTOR) || []];
+				branches.forEach((node) => mark(node, "data-dsh-fairy-composer-branch-control"));
+				if (branches.length) mark(workspaceRow, "data-dsh-fairy-composer-has-branch");
+				const modeButton = workspaceRow?.querySelector('[data-slot="conversation.hero.agentPreset"] button') || (workspaceRow ? [...workspaceRow.querySelectorAll("button")].find((button) => button !== workspaceButton && !button.closest(BRANCH_SELECTOR)) : null);
 				let modeOwner = modeButton;
 				let modeAncestor = modeButton?.parentElement;
 				while (modeAncestor && modeAncestor !== workspaceRow) {
@@ -2124,6 +2149,11 @@ html[data-dsh-fairy-visual],html[data-dsh-fairy-visual] body{color-scheme:dark}h
 			stripProjectionIdentity(template);
 			template.removeAttribute("data-dsh-fairy-composer-workspace");
 			template.removeAttribute("data-dsh-fairy-composer-workspace-projection");
+			// A snapshot is only a disabled Workspace/preset hint. Git state belongs
+			// to the live blank-session chip; cloning it would show a stale branch
+			// (or its open popover) after the first reply and across workspaces.
+			template.removeAttribute("data-dsh-fairy-composer-has-branch");
+			template.querySelectorAll('[data-gitgraph-chip-anchor],[data-dsh-fairy-composer-branch-control]').forEach((node) => node.remove());
 			template.querySelectorAll("[data-dsh-fairy-composer-workspace]").forEach((node) => node.removeAttribute("data-dsh-fairy-composer-workspace"));
 			return template;
 		}

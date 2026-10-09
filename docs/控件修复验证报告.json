@@ -1,0 +1,282 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-09",
+  "title": "Fairy UI / Voice 1.1.1 控件修复验证",
+  "status": "passed",
+  "target": {
+    "os": "Windows x64",
+    "dsh": "0.2.0-rc.2",
+    "visual": "1.1.1",
+    "voice": "1.1.1",
+    "gitGraph": "0.4.5",
+    "orb": "1.1.0 (unchanged)"
+  },
+  "regression": {
+    "total": 44,
+    "passed": 44,
+    "failed": 0,
+    "suites": [
+      {
+        "id": "packed-combined",
+        "name": "已安装发行包 UI + Voice + Git graph",
+        "sourceCase": "installed 1.1.1 packages",
+        "status": "passed",
+        "checksPassed": 14,
+        "checks": [
+          {
+            "name": "Git workspace/branch/preset non-overlap @1600",
+            "status": "passed"
+          },
+          {
+            "name": "Git workspace/branch/preset non-overlap @980",
+            "status": "passed"
+          },
+          {
+            "name": "Git workspace/branch/preset non-overlap @800",
+            "status": "passed"
+          },
+          {
+            "name": "Git workspace/branch/preset non-overlap @700",
+            "status": "passed"
+          },
+          {
+            "name": "three right-hand controls visible and independent",
+            "status": "passed"
+          },
+          {
+            "name": "keyboard volume changes persist with TTS stopped",
+            "status": "passed"
+          },
+          {
+            "name": "mouse volume drag works and saves while TTS is offline",
+            "status": "passed"
+          },
+          {
+            "name": "Git branch popover opens, filters and closes",
+            "status": "passed"
+          },
+          {
+            "name": "Voice UI remains mounted when HDD is disabled",
+            "status": "passed"
+          },
+          {
+            "name": "HDD off/on does not duplicate Voice controllers",
+            "status": "passed"
+          },
+          {
+            "name": "workspace switch handles long labels and retains volume",
+            "status": "passed"
+          },
+          {
+            "name": "first reply removes stale Git projection and keeps volume",
+            "status": "passed"
+          },
+          {
+            "name": "streaming reply preserves user scroll position",
+            "status": "passed"
+          },
+          {
+            "name": "no browser errors and no TTS inference",
+            "status": "passed"
+          }
+        ],
+        "pageErrors": [],
+        "consoleErrors": []
+      },
+      {
+        "id": "desktop-clients",
+        "name": "三个官方桌面客户端模块在隔离 web host 中加载",
+        "sourceCase": "desktop client bundles in isolated web host",
+        "status": "passed",
+        "checksPassed": 14,
+        "checks": [
+          {
+            "name": "Git workspace/branch/preset non-overlap @1600",
+            "status": "passed"
+          },
+          {
+            "name": "Git workspace/branch/preset non-overlap @980",
+            "status": "passed"
+          },
+          {
+            "name": "Git workspace/branch/preset non-overlap @800",
+            "status": "passed"
+          },
+          {
+            "name": "Git workspace/branch/preset non-overlap @700",
+            "status": "passed"
+          },
+          {
+            "name": "three right-hand controls visible and independent",
+            "status": "passed"
+          },
+          {
+            "name": "keyboard volume changes persist with TTS stopped",
+            "status": "passed"
+          },
+          {
+            "name": "mouse volume drag works and saves while TTS is offline",
+            "status": "passed"
+          },
+          {
+            "name": "Git branch popover opens, filters and closes",
+            "status": "passed"
+          },
+          {
+            "name": "Voice UI remains mounted when HDD is disabled",
+            "status": "passed"
+          },
+          {
+            "name": "HDD off/on does not duplicate Voice controllers",
+            "status": "passed"
+          },
+          {
+            "name": "workspace switch handles long labels and retains volume",
+            "status": "passed"
+          },
+          {
+            "name": "first reply removes stale Git projection and keeps volume",
+            "status": "passed"
+          },
+          {
+            "name": "streaming reply preserves user scroll position",
+            "status": "passed"
+          },
+          {
+            "name": "no browser errors and no TTS inference",
+            "status": "passed"
+          }
+        ],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "desktopBundlesReplaced": [
+          "dsh-client-ui-conversation",
+          "dsh-client-ui-workspace",
+          "dsh-client-ui-agent-preset"
+        ]
+      },
+      {
+        "id": "voice-only",
+        "name": "仅安装 Voice",
+        "sourceCase": "installed Voice 1.1.1 only, real active session",
+        "status": "passed",
+        "checksPassed": 6,
+        "checks": [
+          {
+            "name": "only Voice is installed, single auto-enabled bundle",
+            "status": "passed"
+          },
+          {
+            "name": "Voice mounts in active session without Visual/HDD",
+            "status": "passed"
+          },
+          {
+            "name": "offline TTS volume can be adjusted and saved",
+            "status": "passed"
+          },
+          {
+            "name": "session switch preserves volume without duplicate controllers",
+            "status": "passed"
+          },
+          {
+            "name": "saved volume survives browser reload",
+            "status": "passed"
+          },
+          {
+            "name": "no browser errors and no real TTS requests",
+            "status": "passed"
+          }
+        ],
+        "pageErrors": [],
+        "consoleErrors": []
+      },
+      {
+        "id": "installer",
+        "name": "Windows PowerShell 5.1 修复安装器",
+        "sourceCase": "Windows PowerShell 5.1 repair installer",
+        "status": "passed",
+        "checksPassed": 10,
+        "checks": [
+          {
+            "name": "old UI 1.1.0, Git graph and inert existing dsh-orb fixture ready",
+            "status": "passed"
+          },
+          {
+            "name": "CheckOnly accepts existing dsh-orb and makes no metadata or backup changes",
+            "status": "passed"
+          },
+          {
+            "name": "missing TargetClosed safely refuses installation without writes",
+            "status": "passed"
+          },
+          {
+            "name": "installed UI and Voice import in clean Node without runtime dependency fallbacks",
+            "status": "passed"
+          },
+          {
+            "name": "closed-target installation updates UI, installs Voice and preserves Orb, Git and patch",
+            "status": "passed"
+          },
+          {
+            "name": "repeat installation keeps exactly one UI and one Voice bundle",
+            "status": "passed"
+          },
+          {
+            "name": "backup contains package-manager metadata only, no patch, sessions or credentials",
+            "status": "passed"
+          },
+          {
+            "name": "corrupt archive is refused before backup or install",
+            "status": "passed"
+          },
+          {
+            "name": "manual duplicate Voice mount refused without editing user patch",
+            "status": "passed"
+          },
+          {
+            "name": "browser fixture uses the exact bundles installed by the desktop repair script",
+            "status": "passed"
+          }
+        ]
+      }
+    ]
+  },
+  "additionalValidation": {
+    "javascriptSyntax": {
+      "status": "passed",
+      "filesChecked": 12
+    },
+    "packedSourceRepositoryByteMatch": "passed",
+    "visualOfflineTransitiveDependencies": "passed",
+    "commonSecretAndSensitivePathScan": "passed",
+    "repairScriptByteMatch": "passed"
+  },
+  "artifacts": [
+    {
+      "name": "dsh-fairy-visual-1.1.1.tgz",
+      "bytes": 219066,
+      "sha256": "8adab30d96598e5b63d16d1fb20a63e89bb698c8dd329fd8b1d3cad43ac3938f",
+      "tarMembers": 69
+    },
+    {
+      "name": "dsh-fairy-voice-1.1.1.tgz",
+      "bytes": 730071,
+      "sha256": "9391bb3f905d8910b1daf1248468672d52ccbbe78021a8ce31cab9fcbcebbac0",
+      "tarMembers": 496
+    },
+    {
+      "name": "修复安装.ps1",
+      "bytes": 7414,
+      "sha256": "a5a571e63b6b4b92b3f077f7ddf8f4601ecce625bc23dd0b95fe9fa6ba52fc13"
+    }
+  ],
+  "limitations": [
+    "未替换、停止或重启用户正在运行的 Fairy / DeepSeek Harness。",
+    "测试使用隔离 DSH_HOME、本地 mock 对话模型和 mock TTS；未运行真实 TTS/GPU 推理或实际音频播放。",
+    "桌面兼容性检查将三个官方桌面客户端模块替换加载到隔离 web host，不能等同于完整 Electron 整机验收。",
+    "Orb 保持 1.1.0，不安装或启动真实悬浮窗；已有语音模型与音频依赖不修改。",
+    "仅验证 Windows x64 / DSH 0.2.0-rc.2；不保证其他版本、所有第三方皮肤组合或所有崩溃问题均已解决。",
+    "音量 UI 可离线设置，但 UI 出现不代表本地 TTS 服务已启动。",
+    "敏感路径及常见密钥模式检查不等于可以识别所有形式的秘密。"
+  ]
+}

@@ -1,0 +1,78 @@
+﻿Fairy UI / Voice 1.1.1 控件修复验证报告
+日期：2026-10-09
+目标：Windows x64 / DeepSeek Harness 0.2.0-rc.2 / Git graph 0.4.5
+插件：Visual 1.1.1，Voice 1.1.1；Orb 1.1.0 不变。
+
+结果：四组共 44 项隔离测试全部通过，失败 0 项。网页与控制台错误为 0。
+包含鼠标拖动和键盘调整音量、TTS 离线保存、标签分行与分支菜单、长标签、工作区切换、H.D.D 开关、流式回复滚动保护。
+
+已安装发行包 UI + Voice + Git graph：14 项通过
+  1. [passed] Git workspace/branch/preset non-overlap @1600
+  2. [passed] Git workspace/branch/preset non-overlap @980
+  3. [passed] Git workspace/branch/preset non-overlap @800
+  4. [passed] Git workspace/branch/preset non-overlap @700
+  5. [passed] three right-hand controls visible and independent
+  6. [passed] keyboard volume changes persist with TTS stopped
+  7. [passed] mouse volume drag works and saves while TTS is offline
+  8. [passed] Git branch popover opens, filters and closes
+  9. [passed] Voice UI remains mounted when HDD is disabled
+  10. [passed] HDD off/on does not duplicate Voice controllers
+  11. [passed] workspace switch handles long labels and retains volume
+  12. [passed] first reply removes stale Git projection and keeps volume
+  13. [passed] streaming reply preserves user scroll position
+  14. [passed] no browser errors and no TTS inference
+
+三个官方桌面客户端模块在隔离 web host 中加载：14 项通过
+  1. [passed] Git workspace/branch/preset non-overlap @1600
+  2. [passed] Git workspace/branch/preset non-overlap @980
+  3. [passed] Git workspace/branch/preset non-overlap @800
+  4. [passed] Git workspace/branch/preset non-overlap @700
+  5. [passed] three right-hand controls visible and independent
+  6. [passed] keyboard volume changes persist with TTS stopped
+  7. [passed] mouse volume drag works and saves while TTS is offline
+  8. [passed] Git branch popover opens, filters and closes
+  9. [passed] Voice UI remains mounted when HDD is disabled
+  10. [passed] HDD off/on does not duplicate Voice controllers
+  11. [passed] workspace switch handles long labels and retains volume
+  12. [passed] first reply removes stale Git projection and keeps volume
+  13. [passed] streaming reply preserves user scroll position
+  14. [passed] no browser errors and no TTS inference
+  实际替换并加载：dsh-client-ui-conversation, dsh-client-ui-workspace, dsh-client-ui-agent-preset
+
+仅安装 Voice：6 项通过
+  1. [passed] only Voice is installed, single auto-enabled bundle
+  2. [passed] Voice mounts in active session without Visual/HDD
+  3. [passed] offline TTS volume can be adjusted and saved
+  4. [passed] session switch preserves volume without duplicate controllers
+  5. [passed] saved volume survives browser reload
+  6. [passed] no browser errors and no real TTS requests
+
+Windows PowerShell 5.1 修复安装器：10 项通过
+  1. [passed] old UI 1.1.0, Git graph and inert existing dsh-orb fixture ready
+  2. [passed] CheckOnly accepts existing dsh-orb and makes no metadata or backup changes
+  3. [passed] missing TargetClosed safely refuses installation without writes
+  4. [passed] installed UI and Voice import in clean Node without runtime dependency fallbacks
+  5. [passed] closed-target installation updates UI, installs Voice and preserves Orb, Git and patch
+  6. [passed] repeat installation keeps exactly one UI and one Voice bundle
+  7. [passed] backup contains package-manager metadata only, no patch, sessions or credentials
+  8. [passed] corrupt archive is refused before backup or install
+  9. [passed] manual duplicate Voice mount refused without editing user patch
+  10. [passed] browser fixture uses the exact bundles installed by the desktop repair script
+
+附加静态验证：12 个插件 JavaScript 文件语法通过；发行包/源码/仓库字节一致；Visual 离线依赖完整；安装脚本三份字节一致；常见敏感模式检查通过。
+
+验证边界：
+- 未替换、停止或重启用户正在运行的 Fairy / DeepSeek Harness。
+- 测试使用隔离 DSH_HOME、本地 mock 对话模型和 mock TTS；未运行真实 TTS/GPU 推理或实际音频播放。
+- 桌面兼容性检查将三个官方桌面客户端模块替换加载到隔离 web host，不能等同于完整 Electron 整机验收。
+- Orb 保持 1.1.0，不安装或启动真实悬浮窗；已有语音模型与音频依赖不修改。
+- 仅验证 Windows x64 / DSH 0.2.0-rc.2；不保证其他版本、所有第三方皮肤组合或所有崩溃问题均已解决。
+- 音量 UI 可离线设置，但 UI 出现不代表本地 TTS 服务已启动。
+- 敏感路径及常见密钥模式检查不等于可以识别所有形式的秘密。
+
+发行包 SHA256：
+8adab30d96598e5b63d16d1fb20a63e89bb698c8dd329fd8b1d3cad43ac3938f  dsh-fairy-visual-1.1.1.tgz
+9391bb3f905d8910b1daf1248468672d52ccbbe78021a8ce31cab9fcbcebbac0  dsh-fairy-voice-1.1.1.tgz
+a5a571e63b6b4b92b3f077f7ddf8f4601ecce625bc23dd0b95fe9fa6ba52fc13  修复安装.ps1
+
+此报告不包含用户聊天、账号或语音配置；构建信息与完整包内校验和另见同目录文件。

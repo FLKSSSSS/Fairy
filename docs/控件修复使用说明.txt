@@ -1,0 +1,71 @@
+﻿Fairy UI / Voice 1.1.1 控件修复（2026-10-09）
+适用：Windows x64，DeepSeek Harness 0.2.0-rc.2。1.1.1 是插件版本，不是 DSH 版本。
+
+本次修复
+1. Git graph 的 master 分支与工作区名、agent 预设分行显示；保留真实分支菜单功能。
+2. 分支菜单向上展开，避免在底部输入区打开时超出屏幕。
+3. 发送首条消息后，不在工作区投影里保留过期 master 分支。
+4. 显示音量滑块，支持鼠标和键盘；TTS 未启动时也可预先调节音量。
+5. Fairy Voice 独立于 Fairy UI/H.D.D：关闭 H.D.D 或只装 Voice 仍有朗读控件。
+6. 保留眼睛大小、动画速度、渐变背景和流式回复滚动保护。
+
+这是什么包
+包含两个 1.1.1 插件包、修复安装脚本、使用说明、验证报告、构建信息、效果图及 SHA256 校验和。
+不包含或更新 Orb/dsh-orb，不改变 agent 默认身份；不会重新下载模型。
+已有的独立 dsh-orb 可以保留。本脚本不适用于旧 Fairy 整合版的非 bundle UI/Voice。
+不要使用旧 1.1.0 合集的安装插件.ps1 来修复已装 dsh-orb 的桌面环境；旧脚本会拒绝。
+不包含 API Key、会话或用户语音设置，也不替换 E:\Fairy 或 F:\fairy音频依赖。
+
+如何安装到桌面 DSH
+1. 完整解压本 ZIP，保留脚本、两个 tgz 和 SHA256SUMS.txt 在同一目录。
+2. 确认桌面 DSH 的实际数据目录/profile。本脚本默认 %USERPROFILE%\.dsh / desktop，
+   若你设置过 DSH_HOME，请用 -DshHome 指向那个目录。不要在不同目录安装后误以为已生效。
+3. 先只检查。示例假设包解压在 F:\Fairy修复，并且 DSH 位于 E:\DSH：
+   powershell -NoProfile -ExecutionPolicy Bypass -File 'F:\Fairy修复\修复安装.ps1' -DshCommand 'E:\DSH\resources\runtime\cli\bin\dsh.cmd' -CheckOnly
+   输出目标 DSH_HOME、desktop profile、版本和校验通过。检查不创建目录或安装插件。
+4. 正常退出目标 DSH/Fairy，再安装：
+   powershell -NoProfile -ExecutionPolicy Bypass -File 'F:\Fairy修复\修复安装.ps1' -DshCommand 'E:\DSH\resources\runtime\cli\bin\dsh.cmd' -TargetClosed
+   -TargetClosed 表示你已关闭目标程序；脚本不会检测后杀进程，也不会重启程序。
+   未加 -TargetClosed 时仅允许 -CheckOnly，不会擅自安装。
+5. 按原来的方式重新打开 DSH。安装脚本不启动 DSH/TTS；自定义 DSH_HOME 启动时仍需一致。
+
+web profile / 自定义数据目录
+如果你用命令行 web 版，附加 -Profile web；例如：
+   powershell -NoProfile -ExecutionPolicy Bypass -File 'F:\Fairy修复\修复安装.ps1' -Profile web -DshHome 'F:\我的DSH数据' -TargetClosed
+dsh 不在 PATH 时附加 -DshCommand '实际的\dsh.cmd路径'。脚本严格检查 0.2.0-rc.2，不强行安装到其他版本。
+安装通过 DSH 官方 plugin add，自动启用两个 bundle；不手改 cordis.patch.yml，不安装第二个 Orb。
+脚本备份目标 profile 的 package.json / pnpm-lock.yaml / pnpm-workspace.yaml 到其 backups 目录。
+不复制用户 patch、凭据、聊天或 voice-brain.json；备份不是完整应用快照，不要盲目回滚覆盖新数据。
+
+音量在哪里 / 如何使用
+H.D.D 开启时：输入框右侧三个横条，最上面是语音音量，下面两个是眼睛大小和动画速度。
+鼠标拖动音量滑块，或选中后用方向键（每次 5%）、Home（0%）、End（100%）。
+H.D.D 关闭或只装 Voice 时：音量和播放/自动朗读控制显示在原生输入栏。
+“朗读”设置中仍可配置手动测试及自动朗读。TTS 未就绪时自动朗读按钮禁用，但音量可提前设置。
+音量会记住；调节音量不会启动推理服务。安装 UI 而未装 Voice，只有两个眼睛控件是正常的。
+本修复会把 Voice 一并安装/升级，所以不需要自行找缺失的语音插件。
+
+朗读服务
+音量 UI 出现，不代表 TTS 服务已启动。已有模型和 Python 环境无需重新下载或覆盖。
+使用你原来的本地 TTS 启动脚本；便携 voice-runtime 的示例：
+   powershell -NoProfile -ExecutionPolicy Bypass -File 'F:\fairy音频依赖\voice-runtime\start_tts_portable.ps1' -Device cpu -StartupTimeoutSeconds 180
+如果你的启动脚本直接位于 F:\fairy音频依赖，继续使用实际路径，不要为套用示例移动环境。
+服务默认 http://127.0.0.1:9880；先确认服务就绪，再在“朗读”设置中测试播放或启用自动朗读。
+
+常见问题
+- 没音量：确认当前 profile 同时安装两个 1.1.1，并在退出后重新打开；核对 DSH_HOME。
+- 仍重叠：确认更新的是当前桌面 profile，不是另一个 web 测试目录。
+- 提示手动挂载：避免 bundle 与手写同名 UI/Voice 双挂载。本脚本不会删除你的 patch，请核对安装来源。
+- 已有 dsh-orb：允许保留；无需删除悬浮窗、工作区或会话。
+- 不同 DSH 版本：未验证，本包拒绝安装；请不要绕过版本安全门。
+- 无声：检查音量是否 0%、TTS 是否就绪、系统输出设备和原来的参考音频/模型配置。
+
+验证范围
+在隔离 DSH_HOME、真实无头 Edge、模拟 TTS/本地模拟对话模型中测试。
+包含 UI+Voice+Git graph、Voice 单装、H.D.D 开关、分支菜单、长标签、工作区切换、首条回复投影与滚动保护。
+额外使用桌面内置客户端模块在隔离 web host 中交叉验证，不等同于实际桌面窗口完整验收。
+未停止/启动用户程序、未运行真实 TTS/GPU 推理，不保证所有第三方皮肤组合或所有机器无故障。
+四组共 44 项隔离测试通过。详细结果见 控件修复验证报告.json / 控件修复验证报告.txt；源码及更新说明见 GitHub Fairy 仓库。
+
+来源与许可
+沿用原 Fairy 插件资源与第三方依赖；各自 LICENSE/notice 保留。不新增角色、声音或模型的商业/再分发授权。

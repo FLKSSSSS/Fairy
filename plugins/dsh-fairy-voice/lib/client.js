@@ -1514,36 +1514,15 @@ module.exports = { FAIRY_LOG_PREFIX, createFairyDiagnostics };
       return jsx.jsxs('span', { className: 'dsh-fairy-voice-controls', role: 'group', 'aria-label': 'Fairy 朗读控制', [FAIRY_VOICE_CONTROL_ATTRIBUTE]: 'true', children: [
         jsx.jsx(Tooltip, { label: engineAvailable ? autoLabel : availability.reason, children: jsx.jsx('button', { type: 'button', className: 'dsh-fairy-voice-auto', 'data-dsh-fairy-auto-control': 'true', 'data-on': autoRead ? 'true' : 'false', disabled: !engineAvailable, onClick: () => setAutoRead((value) => !value), 'aria-label': autoLabel, 'aria-pressed': autoRead, children: jsx.jsx('span', { className: 'dsh-fairy-voice-auto-dot', 'data-dsh-fairy-auto-dot': 'true', 'aria-hidden': 'true' }) }) }),
         jsx.jsx('span', { className: 'dsh-fairy-voice-waveform', 'data-dsh-fairy-waveform': 'true', 'aria-hidden': 'true', children: waveform }),
-        jsx.jsx(Tooltip, { label: `语音音量 ${Math.round(volume * 100)}%`, children: jsx.jsx('input', { className: 'dsh-fairy-voice-volume', 'data-dsh-fairy-volume-input': 'true', disabled: !engineAvailable, min: '0', max: '1', step: '0.05', type: 'range', value: volume, onChange: (event) => setVolume(Number(event.target.value)), 'aria-label': '语音音量', style: { '--dsh-fairy-volume': `${Math.round(volume * 100)}%` } }) }),
+        jsx.jsx(Tooltip, { label: `语音音量 ${Math.round(volume * 100)}%`, children: jsx.jsx('input', { className: 'dsh-fairy-voice-volume', 'data-dsh-fairy-volume-input': 'true', min: '0', max: '1', step: '0.05', type: 'range', value: volume, onChange: (event) => setVolume(Number(event.target.value)), 'aria-label': '语音音量', 'aria-valuetext': `${Math.round(volume * 100)}%`, title: `语音音量 ${Math.round(volume * 100)}%`, style: { '--dsh-fairy-volume': `${Math.round(volume * 100)}%` } }) }),
         engine === 'fairy' && state.status === 'error' ? jsx.jsx('span', { title: state.error, style: { color: 'var(--dsw-alias-state-error-primary)', fontSize: '12px', maxWidth: '96px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }, children: '朗读失败' }) : null
       ] });
     }
 
-    function useHddVisualMode() {
-      const readMode = () => document.documentElement?.hasAttribute('data-dsh-fairy-visual') === true;
-      return React.useSyncExternalStore((notify) => {
-        // The visual plugin owns this document attribute. Observing that one
-        // source keeps the Voice slot in lockstep without coupling to its
-        // settings store or duplicating its mode state.
-        if (typeof MutationObserver !== 'function' || !document.documentElement) return () => {};
-        const observer = new MutationObserver(notify);
-        observer.observe(document.documentElement, {
-          attributes: true,
-          attributeFilter: ['data-dsh-fairy-visual'],
-        });
-        return () => observer.disconnect();
-      }, readMode, readMode);
-    }
-
     function SessionScopedVoiceController(props) {
-      const hddVisualMode = useHddVisualMode();
-      // In normal DSH mode this slot has no Voice surface or controller
-      // lifecycle at all. Switching back to HDD mounts a fresh, session-keyed
-      // controller, so mode changes cannot retain audio or DOM ownership.
-      if (!hddVisualMode) return null;
-      // Force a clean controller/ref lifecycle when DSH changes the active
-      // session. This prevents playback and seen-message state leaking across
-      // conversation providers during the transition frame.
+      // The Voice plugin is independent of the optional Fairy Visual/HDD mode.
+      // Keep one session-keyed controller mounted in the official input slot;
+      // toggling a skin must not hide volume settings or duplicate playback.
       return jsx.jsx(VoiceController, { ...props, key: String(props.sessionId ?? 'empty-chat') });
     }
 
