@@ -1,0 +1,1264 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-09",
+  "title": "Fairy UI 1.1.2 背景与输入区修复验证",
+  "status": "passed",
+  "target": {
+    "os": "Windows x64",
+    "dsh": "0.2.0-rc.2",
+    "visual": "1.1.2",
+    "voice": "1.1.1 (unchanged)",
+    "gitGraph": "0.4.5",
+    "orb": "1.1.0 (unchanged)"
+  },
+  "regression": {
+    "total": 184,
+    "passed": 184,
+    "failed": 0,
+    "browserAndInstaller": 175,
+    "sourceAndLightweightDom": 9,
+    "suites": [
+      {
+        "id": "final-source-web",
+        "name": "最终源码 UI + Voice / web 客户端",
+        "sourceCase": "patched web bundles",
+        "status": "passed",
+        "checksPassed": 34,
+        "sourceReportSha256": "efd3977480bb57336ca3c582692b8245aaa28d4d03eb4ab6671b0f03926f5348",
+        "checks": [
+          {
+            "name": "Git workspace/branch/preset non-overlap @1600",
+            "status": "passed"
+          },
+          {
+            "name": "Git workspace/branch/preset non-overlap @980",
+            "status": "passed"
+          },
+          {
+            "name": "Git workspace/branch/preset non-overlap @800",
+            "status": "passed"
+          },
+          {
+            "name": "Git workspace/branch/preset non-overlap @700",
+            "status": "passed"
+          },
+          {
+            "name": "three right-hand controls visible and independent",
+            "status": "passed"
+          },
+          {
+            "name": "keyboard volume changes persist with TTS stopped",
+            "status": "passed"
+          },
+          {
+            "name": "mouse volume drag works and saves while TTS is offline",
+            "status": "passed"
+          },
+          {
+            "name": "rapid hover/drags preserve live range layout markers and persist volume",
+            "status": "passed"
+          },
+          {
+            "name": "Git branch popover opens, filters and closes",
+            "status": "passed"
+          },
+          {
+            "name": "Voice UI remains mounted when HDD is disabled",
+            "status": "passed"
+          },
+          {
+            "name": "HDD off removes gradient host",
+            "status": "passed"
+          },
+          {
+            "name": "HDD off/on does not duplicate Voice controllers",
+            "status": "passed"
+          },
+          {
+            "name": "HDD on mounts exactly one gradient host",
+            "status": "passed"
+          },
+          {
+            "name": "workspace switch handles long labels and retains controls",
+            "status": "passed"
+          },
+          {
+            "name": "gradient unobscured: hero-light",
+            "status": "passed"
+          },
+          {
+            "name": "first reply removes stale Git projection and keeps controls",
+            "status": "passed"
+          },
+          {
+            "name": "gradient unobscured: active-light",
+            "status": "passed"
+          },
+          {
+            "name": "gradient unobscured: active-dark",
+            "status": "passed"
+          },
+          {
+            "name": "gradient unobscured: active-light-restored",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: yaml-top",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: yaml-over-input",
+            "status": "passed"
+          },
+          {
+            "name": "editor remains clickable and editable across YAML banner",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: yaml-sticky",
+            "status": "passed"
+          },
+          {
+            "name": "visible code toolbar copy button works",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: yaml-bottom",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: yaml-narrow-980",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: yaml-narrow-800",
+            "status": "passed"
+          },
+          {
+            "name": "settings modal/backdrop stays above composer",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: after-settings-dismiss",
+            "status": "passed"
+          },
+          {
+            "name": "gradient unobscured: active-after-hdd-cycle",
+            "status": "passed"
+          },
+          {
+            "name": "streaming reply preserves user scroll position",
+            "status": "passed"
+          },
+          {
+            "name": "gradient unobscured: active-after-app-reload",
+            "status": "passed"
+          },
+          {
+            "name": "application reload remounts one background host without duplicate controls",
+            "status": "passed"
+          },
+          {
+            "name": "no browser errors and no TTS inference",
+            "status": "passed"
+          }
+        ],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "mockTtsOnly": true,
+        "backgrounds": [
+          {
+            "label": "hero-light",
+            "theme": "light",
+            "hosts": 1,
+            "hostVisible": true,
+            "gradientLayerCount": 3
+          },
+          {
+            "label": "active-light",
+            "theme": "light",
+            "hosts": 1,
+            "hostVisible": true,
+            "gradientLayerCount": 3
+          },
+          {
+            "label": "active-dark",
+            "theme": "dark",
+            "hosts": 1,
+            "hostVisible": true,
+            "gradientLayerCount": 3
+          },
+          {
+            "label": "active-light-restored",
+            "theme": "light",
+            "hosts": 1,
+            "hostVisible": true,
+            "gradientLayerCount": 3
+          },
+          {
+            "label": "active-after-hdd-cycle",
+            "theme": "dark",
+            "hosts": 1,
+            "hostVisible": true,
+            "gradientLayerCount": 3
+          },
+          {
+            "label": "active-after-app-reload",
+            "theme": "dark",
+            "hosts": 1,
+            "hostVisible": true,
+            "gradientLayerCount": 3
+          }
+        ],
+        "codeBannerOcclusion": [
+          {
+            "label": "yaml-top",
+            "occluded": []
+          },
+          {
+            "label": "yaml-over-input",
+            "occluded": []
+          },
+          {
+            "label": "yaml-sticky",
+            "occluded": []
+          },
+          {
+            "label": "yaml-bottom",
+            "occluded": []
+          },
+          {
+            "label": "yaml-narrow-980",
+            "occluded": []
+          },
+          {
+            "label": "yaml-narrow-800",
+            "occluded": []
+          },
+          {
+            "label": "after-settings-dismiss",
+            "occluded": []
+          }
+        ]
+      },
+      {
+        "id": "final-source-desktop",
+        "name": "最终源码 / 三个官方 desktop 客户端模块",
+        "sourceCase": "desktop client bundles in isolated web host",
+        "status": "passed",
+        "checksPassed": 34,
+        "sourceReportSha256": "b3f24b753c530a82bed5ea97c196811db8540d1262c8cc1c4ca5b1c510581281",
+        "checks": [
+          {
+            "name": "Git workspace/branch/preset non-overlap @1600",
+            "status": "passed"
+          },
+          {
+            "name": "Git workspace/branch/preset non-overlap @980",
+            "status": "passed"
+          },
+          {
+            "name": "Git workspace/branch/preset non-overlap @800",
+            "status": "passed"
+          },
+          {
+            "name": "Git workspace/branch/preset non-overlap @700",
+            "status": "passed"
+          },
+          {
+            "name": "three right-hand controls visible and independent",
+            "status": "passed"
+          },
+          {
+            "name": "keyboard volume changes persist with TTS stopped",
+            "status": "passed"
+          },
+          {
+            "name": "mouse volume drag works and saves while TTS is offline",
+            "status": "passed"
+          },
+          {
+            "name": "rapid hover/drags preserve live range layout markers and persist volume",
+            "status": "passed"
+          },
+          {
+            "name": "Git branch popover opens, filters and closes",
+            "status": "passed"
+          },
+          {
+            "name": "Voice UI remains mounted when HDD is disabled",
+            "status": "passed"
+          },
+          {
+            "name": "HDD off removes gradient host",
+            "status": "passed"
+          },
+          {
+            "name": "HDD off/on does not duplicate Voice controllers",
+            "status": "passed"
+          },
+          {
+            "name": "HDD on mounts exactly one gradient host",
+            "status": "passed"
+          },
+          {
+            "name": "workspace switch handles long labels and retains controls",
+            "status": "passed"
+          },
+          {
+            "name": "gradient unobscured: hero-light",
+            "status": "passed"
+          },
+          {
+            "name": "first reply removes stale Git projection and keeps controls",
+            "status": "passed"
+          },
+          {
+            "name": "gradient unobscured: active-light",
+            "status": "passed"
+          },
+          {
+            "name": "gradient unobscured: active-dark",
+            "status": "passed"
+          },
+          {
+            "name": "gradient unobscured: active-light-restored",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: yaml-top",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: yaml-over-input",
+            "status": "passed"
+          },
+          {
+            "name": "editor remains clickable and editable across YAML banner",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: yaml-sticky",
+            "status": "passed"
+          },
+          {
+            "name": "visible code toolbar copy button works",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: yaml-bottom",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: yaml-narrow-980",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: yaml-narrow-800",
+            "status": "passed"
+          },
+          {
+            "name": "settings modal/backdrop stays above composer",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: after-settings-dismiss",
+            "status": "passed"
+          },
+          {
+            "name": "gradient unobscured: active-after-hdd-cycle",
+            "status": "passed"
+          },
+          {
+            "name": "streaming reply preserves user scroll position",
+            "status": "passed"
+          },
+          {
+            "name": "gradient unobscured: active-after-app-reload",
+            "status": "passed"
+          },
+          {
+            "name": "application reload remounts one background host without duplicate controls",
+            "status": "passed"
+          },
+          {
+            "name": "no browser errors and no TTS inference",
+            "status": "passed"
+          }
+        ],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "mockTtsOnly": true,
+        "backgrounds": [
+          {
+            "label": "hero-light",
+            "theme": "light",
+            "hosts": 1,
+            "hostVisible": true,
+            "gradientLayerCount": 3
+          },
+          {
+            "label": "active-light",
+            "theme": "light",
+            "hosts": 1,
+            "hostVisible": true,
+            "gradientLayerCount": 3
+          },
+          {
+            "label": "active-dark",
+            "theme": "dark",
+            "hosts": 1,
+            "hostVisible": true,
+            "gradientLayerCount": 3
+          },
+          {
+            "label": "active-light-restored",
+            "theme": "light",
+            "hosts": 1,
+            "hostVisible": true,
+            "gradientLayerCount": 3
+          },
+          {
+            "label": "active-after-hdd-cycle",
+            "theme": "dark",
+            "hosts": 1,
+            "hostVisible": true,
+            "gradientLayerCount": 3
+          },
+          {
+            "label": "active-after-app-reload",
+            "theme": "dark",
+            "hosts": 1,
+            "hostVisible": true,
+            "gradientLayerCount": 3
+          }
+        ],
+        "codeBannerOcclusion": [
+          {
+            "label": "yaml-top",
+            "occluded": []
+          },
+          {
+            "label": "yaml-over-input",
+            "occluded": []
+          },
+          {
+            "label": "yaml-sticky",
+            "occluded": []
+          },
+          {
+            "label": "yaml-bottom",
+            "occluded": []
+          },
+          {
+            "label": "yaml-narrow-980",
+            "occluded": []
+          },
+          {
+            "label": "yaml-narrow-800",
+            "occluded": []
+          },
+          {
+            "label": "after-settings-dismiss",
+            "occluded": []
+          }
+        ],
+        "desktopBundlesReplaced": [
+          "dsh-client-ui-agent-preset",
+          "dsh-client-ui-conversation",
+          "dsh-client-ui-workspace"
+        ]
+      },
+      {
+        "id": "final-visual-only",
+        "name": "仅 UI 插件，不安装 Voice",
+        "sourceCase": "patched web bundles",
+        "status": "passed",
+        "checksPassed": 29,
+        "sourceReportSha256": "779d925bf11373effd0392d3721ef26e369188667ca1f85f9d195de974cfe9cf",
+        "checks": [
+          {
+            "name": "Git workspace/branch/preset non-overlap @1600",
+            "status": "passed"
+          },
+          {
+            "name": "Git workspace/branch/preset non-overlap @980",
+            "status": "passed"
+          },
+          {
+            "name": "Git workspace/branch/preset non-overlap @800",
+            "status": "passed"
+          },
+          {
+            "name": "Git workspace/branch/preset non-overlap @700",
+            "status": "passed"
+          },
+          {
+            "name": "standalone Visual eye controls visible and independent",
+            "status": "passed"
+          },
+          {
+            "name": "Git branch popover opens, filters and closes",
+            "status": "passed"
+          },
+          {
+            "name": "HDD off removes gradient host",
+            "status": "passed"
+          },
+          {
+            "name": "HDD on mounts exactly one gradient host",
+            "status": "passed"
+          },
+          {
+            "name": "workspace switch handles long labels and retains controls",
+            "status": "passed"
+          },
+          {
+            "name": "gradient unobscured: hero-light",
+            "status": "passed"
+          },
+          {
+            "name": "first reply removes stale Git projection and keeps controls",
+            "status": "passed"
+          },
+          {
+            "name": "gradient unobscured: active-light",
+            "status": "passed"
+          },
+          {
+            "name": "gradient unobscured: active-dark",
+            "status": "passed"
+          },
+          {
+            "name": "gradient unobscured: active-light-restored",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: yaml-top",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: yaml-over-input",
+            "status": "passed"
+          },
+          {
+            "name": "editor remains clickable and editable across YAML banner",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: yaml-sticky",
+            "status": "passed"
+          },
+          {
+            "name": "visible code toolbar copy button works",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: yaml-bottom",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: yaml-narrow-980",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: yaml-narrow-800",
+            "status": "passed"
+          },
+          {
+            "name": "settings modal/backdrop stays above composer",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: after-settings-dismiss",
+            "status": "passed"
+          },
+          {
+            "name": "gradient unobscured: active-after-hdd-cycle",
+            "status": "passed"
+          },
+          {
+            "name": "streaming reply preserves user scroll position",
+            "status": "passed"
+          },
+          {
+            "name": "gradient unobscured: active-after-app-reload",
+            "status": "passed"
+          },
+          {
+            "name": "application reload remounts one background host without duplicate controls",
+            "status": "passed"
+          },
+          {
+            "name": "no browser errors and no TTS inference",
+            "status": "passed"
+          }
+        ],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "mockTtsOnly": true,
+        "backgrounds": [
+          {
+            "label": "hero-light",
+            "theme": "light",
+            "hosts": 1,
+            "hostVisible": true,
+            "gradientLayerCount": 3
+          },
+          {
+            "label": "active-light",
+            "theme": "light",
+            "hosts": 1,
+            "hostVisible": true,
+            "gradientLayerCount": 3
+          },
+          {
+            "label": "active-dark",
+            "theme": "dark",
+            "hosts": 1,
+            "hostVisible": true,
+            "gradientLayerCount": 3
+          },
+          {
+            "label": "active-light-restored",
+            "theme": "light",
+            "hosts": 1,
+            "hostVisible": true,
+            "gradientLayerCount": 3
+          },
+          {
+            "label": "active-after-hdd-cycle",
+            "theme": "dark",
+            "hosts": 1,
+            "hostVisible": true,
+            "gradientLayerCount": 3
+          },
+          {
+            "label": "active-after-app-reload",
+            "theme": "dark",
+            "hosts": 1,
+            "hostVisible": true,
+            "gradientLayerCount": 3
+          }
+        ],
+        "codeBannerOcclusion": [
+          {
+            "label": "yaml-top",
+            "occluded": []
+          },
+          {
+            "label": "yaml-over-input",
+            "occluded": []
+          },
+          {
+            "label": "yaml-sticky",
+            "occluded": []
+          },
+          {
+            "label": "yaml-bottom",
+            "occluded": []
+          },
+          {
+            "label": "yaml-narrow-980",
+            "occluded": []
+          },
+          {
+            "label": "yaml-narrow-800",
+            "occluded": []
+          },
+          {
+            "label": "after-settings-dismiss",
+            "occluded": []
+          }
+        ]
+      },
+      {
+        "id": "final-packed-web",
+        "name": "实际安装的最终 tgz / web 客户端",
+        "sourceCase": "installed release packages",
+        "status": "passed",
+        "checksPassed": 34,
+        "sourceReportSha256": "dd5d9e0d830cb04727c8445e16da970af2acfb8ce8a409ae8c88c3df537c8687",
+        "checks": [
+          {
+            "name": "Git workspace/branch/preset non-overlap @1600",
+            "status": "passed"
+          },
+          {
+            "name": "Git workspace/branch/preset non-overlap @980",
+            "status": "passed"
+          },
+          {
+            "name": "Git workspace/branch/preset non-overlap @800",
+            "status": "passed"
+          },
+          {
+            "name": "Git workspace/branch/preset non-overlap @700",
+            "status": "passed"
+          },
+          {
+            "name": "three right-hand controls visible and independent",
+            "status": "passed"
+          },
+          {
+            "name": "keyboard volume changes persist with TTS stopped",
+            "status": "passed"
+          },
+          {
+            "name": "mouse volume drag works and saves while TTS is offline",
+            "status": "passed"
+          },
+          {
+            "name": "rapid hover/drags preserve live range layout markers and persist volume",
+            "status": "passed"
+          },
+          {
+            "name": "Git branch popover opens, filters and closes",
+            "status": "passed"
+          },
+          {
+            "name": "Voice UI remains mounted when HDD is disabled",
+            "status": "passed"
+          },
+          {
+            "name": "HDD off removes gradient host",
+            "status": "passed"
+          },
+          {
+            "name": "HDD off/on does not duplicate Voice controllers",
+            "status": "passed"
+          },
+          {
+            "name": "HDD on mounts exactly one gradient host",
+            "status": "passed"
+          },
+          {
+            "name": "workspace switch handles long labels and retains controls",
+            "status": "passed"
+          },
+          {
+            "name": "gradient unobscured: hero-light",
+            "status": "passed"
+          },
+          {
+            "name": "first reply removes stale Git projection and keeps controls",
+            "status": "passed"
+          },
+          {
+            "name": "gradient unobscured: active-light",
+            "status": "passed"
+          },
+          {
+            "name": "gradient unobscured: active-dark",
+            "status": "passed"
+          },
+          {
+            "name": "gradient unobscured: active-light-restored",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: yaml-top",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: yaml-over-input",
+            "status": "passed"
+          },
+          {
+            "name": "editor remains clickable and editable across YAML banner",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: yaml-sticky",
+            "status": "passed"
+          },
+          {
+            "name": "visible code toolbar copy button works",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: yaml-bottom",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: yaml-narrow-980",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: yaml-narrow-800",
+            "status": "passed"
+          },
+          {
+            "name": "settings modal/backdrop stays above composer",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: after-settings-dismiss",
+            "status": "passed"
+          },
+          {
+            "name": "gradient unobscured: active-after-hdd-cycle",
+            "status": "passed"
+          },
+          {
+            "name": "streaming reply preserves user scroll position",
+            "status": "passed"
+          },
+          {
+            "name": "gradient unobscured: active-after-app-reload",
+            "status": "passed"
+          },
+          {
+            "name": "application reload remounts one background host without duplicate controls",
+            "status": "passed"
+          },
+          {
+            "name": "no browser errors and no TTS inference",
+            "status": "passed"
+          }
+        ],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "mockTtsOnly": true,
+        "backgrounds": [
+          {
+            "label": "hero-light",
+            "theme": "light",
+            "hosts": 1,
+            "hostVisible": true,
+            "gradientLayerCount": 3
+          },
+          {
+            "label": "active-light",
+            "theme": "light",
+            "hosts": 1,
+            "hostVisible": true,
+            "gradientLayerCount": 3
+          },
+          {
+            "label": "active-dark",
+            "theme": "dark",
+            "hosts": 1,
+            "hostVisible": true,
+            "gradientLayerCount": 3
+          },
+          {
+            "label": "active-light-restored",
+            "theme": "light",
+            "hosts": 1,
+            "hostVisible": true,
+            "gradientLayerCount": 3
+          },
+          {
+            "label": "active-after-hdd-cycle",
+            "theme": "dark",
+            "hosts": 1,
+            "hostVisible": true,
+            "gradientLayerCount": 3
+          },
+          {
+            "label": "active-after-app-reload",
+            "theme": "dark",
+            "hosts": 1,
+            "hostVisible": true,
+            "gradientLayerCount": 3
+          }
+        ],
+        "codeBannerOcclusion": [
+          {
+            "label": "yaml-top",
+            "occluded": []
+          },
+          {
+            "label": "yaml-over-input",
+            "occluded": []
+          },
+          {
+            "label": "yaml-sticky",
+            "occluded": []
+          },
+          {
+            "label": "yaml-bottom",
+            "occluded": []
+          },
+          {
+            "label": "yaml-narrow-980",
+            "occluded": []
+          },
+          {
+            "label": "yaml-narrow-800",
+            "occluded": []
+          },
+          {
+            "label": "after-settings-dismiss",
+            "occluded": []
+          }
+        ]
+      },
+      {
+        "id": "final-packed-desktop",
+        "name": "实际安装的最终 tgz / 三个官方 desktop 客户端模块",
+        "sourceCase": "desktop client bundles in isolated web host",
+        "status": "passed",
+        "checksPassed": 34,
+        "sourceReportSha256": "50701db83d43e556af4d95bf6d2de1739d97d5dddb0f9eafc14011a036dc2d77",
+        "checks": [
+          {
+            "name": "Git workspace/branch/preset non-overlap @1600",
+            "status": "passed"
+          },
+          {
+            "name": "Git workspace/branch/preset non-overlap @980",
+            "status": "passed"
+          },
+          {
+            "name": "Git workspace/branch/preset non-overlap @800",
+            "status": "passed"
+          },
+          {
+            "name": "Git workspace/branch/preset non-overlap @700",
+            "status": "passed"
+          },
+          {
+            "name": "three right-hand controls visible and independent",
+            "status": "passed"
+          },
+          {
+            "name": "keyboard volume changes persist with TTS stopped",
+            "status": "passed"
+          },
+          {
+            "name": "mouse volume drag works and saves while TTS is offline",
+            "status": "passed"
+          },
+          {
+            "name": "rapid hover/drags preserve live range layout markers and persist volume",
+            "status": "passed"
+          },
+          {
+            "name": "Git branch popover opens, filters and closes",
+            "status": "passed"
+          },
+          {
+            "name": "Voice UI remains mounted when HDD is disabled",
+            "status": "passed"
+          },
+          {
+            "name": "HDD off removes gradient host",
+            "status": "passed"
+          },
+          {
+            "name": "HDD off/on does not duplicate Voice controllers",
+            "status": "passed"
+          },
+          {
+            "name": "HDD on mounts exactly one gradient host",
+            "status": "passed"
+          },
+          {
+            "name": "workspace switch handles long labels and retains controls",
+            "status": "passed"
+          },
+          {
+            "name": "gradient unobscured: hero-light",
+            "status": "passed"
+          },
+          {
+            "name": "first reply removes stale Git projection and keeps controls",
+            "status": "passed"
+          },
+          {
+            "name": "gradient unobscured: active-light",
+            "status": "passed"
+          },
+          {
+            "name": "gradient unobscured: active-dark",
+            "status": "passed"
+          },
+          {
+            "name": "gradient unobscured: active-light-restored",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: yaml-top",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: yaml-over-input",
+            "status": "passed"
+          },
+          {
+            "name": "editor remains clickable and editable across YAML banner",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: yaml-sticky",
+            "status": "passed"
+          },
+          {
+            "name": "visible code toolbar copy button works",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: yaml-bottom",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: yaml-narrow-980",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: yaml-narrow-800",
+            "status": "passed"
+          },
+          {
+            "name": "settings modal/backdrop stays above composer",
+            "status": "passed"
+          },
+          {
+            "name": "code toolbar does not obscure input: after-settings-dismiss",
+            "status": "passed"
+          },
+          {
+            "name": "gradient unobscured: active-after-hdd-cycle",
+            "status": "passed"
+          },
+          {
+            "name": "streaming reply preserves user scroll position",
+            "status": "passed"
+          },
+          {
+            "name": "gradient unobscured: active-after-app-reload",
+            "status": "passed"
+          },
+          {
+            "name": "application reload remounts one background host without duplicate controls",
+            "status": "passed"
+          },
+          {
+            "name": "no browser errors and no TTS inference",
+            "status": "passed"
+          }
+        ],
+        "pageErrors": [],
+        "consoleErrors": [],
+        "mockTtsOnly": true,
+        "backgrounds": [
+          {
+            "label": "hero-light",
+            "theme": "light",
+            "hosts": 1,
+            "hostVisible": true,
+            "gradientLayerCount": 3
+          },
+          {
+            "label": "active-light",
+            "theme": "light",
+            "hosts": 1,
+            "hostVisible": true,
+            "gradientLayerCount": 3
+          },
+          {
+            "label": "active-dark",
+            "theme": "dark",
+            "hosts": 1,
+            "hostVisible": true,
+            "gradientLayerCount": 3
+          },
+          {
+            "label": "active-light-restored",
+            "theme": "light",
+            "hosts": 1,
+            "hostVisible": true,
+            "gradientLayerCount": 3
+          },
+          {
+            "label": "active-after-hdd-cycle",
+            "theme": "dark",
+            "hosts": 1,
+            "hostVisible": true,
+            "gradientLayerCount": 3
+          },
+          {
+            "label": "active-after-app-reload",
+            "theme": "dark",
+            "hosts": 1,
+            "hostVisible": true,
+            "gradientLayerCount": 3
+          }
+        ],
+        "codeBannerOcclusion": [
+          {
+            "label": "yaml-top",
+            "occluded": []
+          },
+          {
+            "label": "yaml-over-input",
+            "occluded": []
+          },
+          {
+            "label": "yaml-sticky",
+            "occluded": []
+          },
+          {
+            "label": "yaml-bottom",
+            "occluded": []
+          },
+          {
+            "label": "yaml-narrow-980",
+            "occluded": []
+          },
+          {
+            "label": "yaml-narrow-800",
+            "occluded": []
+          },
+          {
+            "label": "after-settings-dismiss",
+            "occluded": []
+          }
+        ],
+        "desktopBundlesReplaced": [
+          "dsh-client-ui-agent-preset",
+          "dsh-client-ui-conversation",
+          "dsh-client-ui-workspace"
+        ]
+      },
+      {
+        "id": "installer-v2",
+        "name": "Windows PowerShell 5.1 修复安装器",
+        "sourceCase": "Windows PowerShell 5.1 repair installer",
+        "status": "passed",
+        "checksPassed": 10,
+        "sourceReportSha256": "c393e459a2d592ad6f6a15081e914150048f18ee74ef87728b7be917fa91a1a8",
+        "checks": [
+          {
+            "name": "old UI 1.1.1, Git graph and inert existing dsh-orb fixture ready",
+            "status": "passed"
+          },
+          {
+            "name": "CheckOnly accepts existing dsh-orb and makes no metadata or backup changes",
+            "status": "passed"
+          },
+          {
+            "name": "missing TargetClosed safely refuses installation without writes",
+            "status": "passed"
+          },
+          {
+            "name": "installed UI and Voice import in clean Node without runtime dependency fallbacks",
+            "status": "passed"
+          },
+          {
+            "name": "closed-target installation updates UI, installs Voice and preserves Orb, Git and patch",
+            "status": "passed"
+          },
+          {
+            "name": "repeat installation keeps exactly one UI and one Voice bundle",
+            "status": "passed"
+          },
+          {
+            "name": "backup contains package-manager metadata only, no patch, sessions or credentials",
+            "status": "passed"
+          },
+          {
+            "name": "corrupt archive is refused before backup or install",
+            "status": "passed"
+          },
+          {
+            "name": "manual duplicate Voice mount refused without editing user patch",
+            "status": "passed"
+          },
+          {
+            "name": "browser fixture uses the exact bundles installed by the desktop repair script",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "id": "final-unit",
+        "name": "源码契约与轻量 DOM 标记协调测试",
+        "sourceCase": "Node source-contract + lightweight DOM fixture tests",
+        "status": "passed",
+        "checksPassed": 9,
+        "checks": [
+          {
+            "name": "client and IIFE ship the same fix",
+            "status": "passed"
+          },
+          {
+            "name": "desktop and web conversation slots are both supported",
+            "status": "passed"
+          },
+          {
+            "name": "transparent main phase is scoped to Fairy HDD mode",
+            "status": "passed"
+          },
+          {
+            "name": "current active or hero phase receives the semantic background marker",
+            "status": "passed"
+          },
+          {
+            "name": "composer outranks sticky code banners but stays behind modal backdrop",
+            "status": "passed"
+          },
+          {
+            "name": "settings adapter recognizes official portal and legacy sidebar dialog",
+            "status": "passed"
+          },
+          {
+            "name": "only Visual is bumped; Voice and Orb versions remain unchanged",
+            "status": "passed"
+          },
+          {
+            "name": "rebinding unchanged controls does not remove or rewrite live layout markers",
+            "status": "passed"
+          },
+          {
+            "name": "reconciliation removes obsolete markers and cleanup preserves unrelated attributes",
+            "status": "passed"
+          }
+        ]
+      }
+    ]
+  },
+  "additionalValidation": {
+    "javascriptSyntax": {
+      "status": "passed",
+      "filesChecked": 24
+    },
+    "packedSourceRepositoryByteMatch": "passed",
+    "visualOfflineTransitiveDependencies": "passed",
+    "commonSecretAndSensitivePathScan": "passed",
+    "repairScriptByteMatch": "passed",
+    "voicePackageByteUnchanged": "passed",
+    "voiceOrbRepositoryUnchanged": "passed",
+    "documentationWindowsPathsAndControlCharacters": "passed"
+  },
+  "artifacts": [
+    {
+      "name": "dsh-fairy-visual-1.1.2.tgz",
+      "bytes": 220202,
+      "sha256": "84742adcfedc360a05eb97fdbd0a8ed42ce272f020a8153bd031bda0a77d2f9c",
+      "tarMembers": 68
+    },
+    {
+      "name": "dsh-fairy-voice-1.1.1.tgz",
+      "bytes": 730071,
+      "sha256": "9391bb3f905d8910b1daf1248468672d52ccbbe78021a8ce31cab9fcbcebbac0",
+      "tarMembers": 496
+    },
+    {
+      "name": "修复安装.ps1",
+      "bytes": 7549,
+      "sha256": "f410013e64909b96a3cdc8ad5907b01bda242f713317a44f8ad26e709ba3521e"
+    }
+  ],
+  "limitations": [
+    "未替换、停止或重启用户正在运行的 Fairy / DeepSeek Harness，未改聊天数据。",
+    "测试使用隔离 DSH_HOME、本地 mock 模型与 mock Voice；真实 TTS 调用为 0，未执行真实音频播放或 GPU 推理。",
+    "桌面兼容性测试将三个官方 desktop 客户端模块加载到隔离 web host，不等于完整 Electron 整机验收。",
+    "Voice 1.1.1 包与此前公开版本逐字节不变；Orb 1.1.0、默认 agent、语音模型及本地环境不变。",
+    "仅验证 Windows x64 / DSH 0.2.0-rc.2；不保证其他版本、所有第三方皮肤组合或所有崩溃问题都已解决。",
+    "H.D.D 开关关闭时不显示渐变网格是预期行为；右侧音量 UI 可离线设置，但不代表 TTS 已启动。",
+    "敏感文件名与常见密钥模式扫描不等于可识别所有形式的秘密。"
+  ]
+}

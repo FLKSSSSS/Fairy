@@ -2,7 +2,7 @@
 
 将 Fairy 的界面、语音朗读和桌面悬浮窗拆分成三个可独立安装的 DeepSeek Harness 插件。
 
-**UI / Voice：1.1.1** · **Orb：1.1.0（本次不变）** · **已验证：DeepSeek Harness 0.2.0-rc.2 / Windows x64**
+**UI：1.1.2** · **Voice：1.1.1（本次不变）** · **Orb：1.1.0（本次不变）** · **已验证：DeepSeek Harness 0.2.0-rc.2 / Windows x64**
 
 > 正式版 `0.2.0` 及其他版本尚未验证。此仓库不是 DSH 主程序，也不内置对话模型或 API Key。安装包适配 Windows x64，不代表其他系统兼容。
 
@@ -15,6 +15,7 @@
 - 动态大眼睛与待机动画
 - 渐变背景、H.D.D 开关与眼睛大小/动画速度设置
 - 对话流式更新滚动位置保护
+- 修复对话面板遮住渐变网格背景、代码块工具栏遮住输入框
 - 修复 Git 分支与工作区标签重叠、底部分支菜单超屏
 - UI 单独安装不注册 Fairy agent；音量控件需要同时安装 Voice
 
@@ -45,6 +46,29 @@
 
 [插件代码与说明](plugins/dsh-fairy-orb)
 
+## 1.1.2 背景与输入区修复（2026-10-09）
+
+修复进入对话后“没有背景”：官方桌面 `main.conversation` 面板的不透明底色挡住了渐变与网格，现在新会话和已有对话均可正确显示。也修复 YAML 等代码块的粘性工具栏遮住输入框，设置弹窗的遮罩仍正确覆盖输入栏。同时修复悬停音量条时 UI 重排打断快速拖动；Voice 发行包不变。
+
+从 [background-v1.1.2](https://github.com/FLKSSSSS/Fairy/releases/tag/background-v1.1.2) 下载 `Fairy-Background-Fix-1.1.2-Windows-x64.zip`，完整解压。包含 UI **1.1.2** 和原版 Voice **1.1.1**；Orb 与语音模型不更新，**无需重新下载模型**。旧 1.1.1 Release 保留。
+
+```powershell
+# 请替换为实际解压位置与 DSH 路径；自定义数据目录需附加 -DshHome
+powershell -NoProfile -ExecutionPolicy Bypass -File 'F:\Fairy背景修复\修复安装.ps1' -DshCommand 'E:\DSH\resources\runtime\cli\bin\dsh.cmd' -CheckOnly
+
+# 正常退出目标 DSH 后安装；不杀进程、不启动 TTS
+powershell -NoProfile -ExecutionPolicy Bypass -File 'F:\Fairy背景修复\修复安装.ps1' -DshCommand 'E:\DSH\resources\runtime\cli\bin\dsh.cmd' -TargetClosed
+```
+
+重新打开 DSH，确认右上 **H.D.D 已开启**。H.D.D 关闭时不显示渐变背景属于正常行为。
+
+- 适配官方桌面与 web 对话面板；浅色/深色主题、首条回复与应用重新打开后背景保持可见。
+- 保留右侧三个控件、Git 分支菜单与流式回复滚动保护。
+- 安装器保留其他插件与用户 patch；只读检查、关闭目标确认及 SHA256 校验仍保留。
+- 隔离浏览器/安装器 175 项、源码与轻量 DOM 9 项，共 184 项通过；**不是用户实际 Electron 整机或真实 TTS/GPU 验收**。
+
+[详细使用说明](docs/背景修复使用说明.txt) · [验证报告](docs/背景修复验证报告.txt) · [深色效果](docs/背景修复深色效果.png)
+
 ## 1.1.1 控件修复（2026-10-09）
 
 修复安装后 `master` 与工作区名重叠、缺少音量 UI。本次只更新 UI / Voice，保留已有悬浮窗、聊天和语音模型，不改变默认 agent。
@@ -73,7 +97,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File 'F:\Fairy修复\修复安装
 
 ## 旧 1.1.0 完整合集（草稿）
 
-历史完整合集与模型分卷仍保留在草稿中，尚未公开；下面记录其附件与安装方法。当前已安装用户优先使用上面的 1.1.1 修复，不需重新下载模型。
+历史完整合集与模型分卷仍保留在草稿中，尚未公开；下面记录其附件与安装方法。当前已安装用户优先使用上面的 1.1.2 背景修复，不需重新下载模型。
 
 历史草稿：**[Releases / plugins-v1.1.0](https://github.com/FLKSSSSS/Fairy/releases/tag/plugins-v1.1.0)**：
 

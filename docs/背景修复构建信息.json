@@ -1,0 +1,130 @@
+{
+  "date": "2026-10-09",
+  "dsh": "0.2.0-rc.2",
+  "packages": [
+    {
+      "name": "dsh-fairy-visual",
+      "version": "1.1.2",
+      "bundledDependencies": [
+        "@deepseek-ai/schemastery",
+        "@deepseek-ai/cosmokit",
+        "@standard-schema/spec"
+      ]
+    },
+    {
+      "name": "dsh-fairy-voice",
+      "version": "1.1.1",
+      "bundledDependencies": [
+        "ccount",
+        "character-entities",
+        "debug",
+        "decode-named-character-reference",
+        "dequal",
+        "devlop",
+        "escape-string-regexp",
+        "longest-streak",
+        "markdown-table",
+        "mdast-util-find-and-replace",
+        "mdast-util-from-markdown",
+        "mdast-util-gfm",
+        "mdast-util-gfm-autolink-literal",
+        "mdast-util-gfm-footnote",
+        "mdast-util-gfm-strikethrough",
+        "mdast-util-gfm-table",
+        "mdast-util-gfm-task-list-item",
+        "mdast-util-phrasing",
+        "mdast-util-to-markdown",
+        "mdast-util-to-string",
+        "micromark",
+        "micromark-core-commonmark",
+        "micromark-extension-gfm",
+        "micromark-extension-gfm-autolink-literal",
+        "micromark-extension-gfm-footnote",
+        "micromark-extension-gfm-strikethrough",
+        "micromark-extension-gfm-table",
+        "micromark-extension-gfm-tagfilter",
+        "micromark-extension-gfm-task-list-item",
+        "micromark-factory-destination",
+        "micromark-factory-label",
+        "micromark-factory-space",
+        "micromark-factory-title",
+        "micromark-factory-whitespace",
+        "micromark-util-character",
+        "micromark-util-chunked",
+        "micromark-util-classify-character",
+        "micromark-util-combine-extensions",
+        "micromark-util-decode-numeric-character-reference",
+        "micromark-util-decode-string",
+        "micromark-util-encode",
+        "micromark-util-html-tag-name",
+        "micromark-util-normalize-identifier",
+        "micromark-util-resolve-all",
+        "micromark-util-sanitize-uri",
+        "micromark-util-subtokenize",
+        "micromark-util-symbol",
+        "micromark-util-types",
+        "ms",
+        "unist-util-is",
+        "unist-util-stringify-position",
+        "unist-util-visit",
+        "unist-util-visit-parents",
+        "zwitch"
+      ]
+    },
+    {
+      "name": "dsh-fairy-orb",
+      "version": "1.1.0",
+      "bundledDependencies": [
+        "koffi",
+        "@koromix/koffi-win32-x64"
+      ]
+    }
+  ],
+  "fairyPlugins": [
+    "@deepseek-ai/dsh-persona",
+    "dsh-fairy-orb/fairy-runtime",
+    "dsh-fairy-orb/fairy-safety-gate",
+    "@deepseek-ai/dsh-tool-bash",
+    "@deepseek-ai/dsh-tool-pwsh",
+    "cordis:group",
+    "cordis:group",
+    "cordis:group",
+    "@deepseek-ai/dsh-tool-ask-user",
+    "@deepseek-ai/dsh-tool-web",
+    "dsh-fairy-orb/computer-use",
+    "dsh-fairy-orb/computer-use/code-agent"
+  ],
+  "omittedFairyPlugins": [
+    "dsh-fairy-runtime",
+    "dsh-fairy-runtime/safety-gate",
+    "@deepseek-ai/dsh-agent-instructions",
+    "@deepseek-ai/dsh-tool-fs",
+    "@deepseek-ai/dsh-tool-fs-search",
+    "@deepseek-ai/dsh-tool-jobs",
+    "@deepseek-ai/dsh-skill-filesystem",
+    "@deepseek-ai/dsh-tool-skill",
+    "@deepseek-ai/dsh-tool-goal",
+    "@deepseek-ai/dsh-tool-todo"
+  ],
+  "controlsFix": {
+    "date": "2026-10-09",
+    "visual": "1.1.1",
+    "voice": "1.1.1",
+    "orb": "unchanged 1.1.0",
+    "report": "控件修复验证报告.json"
+  },
+  "backgroundFix": {
+    "date": "2026-10-09",
+    "visual": "1.1.2",
+    "voice": "unchanged 1.1.1",
+    "orb": "unchanged 1.1.0",
+    "report": "背景修复验证报告.json",
+    "changes": [
+      "active desktop background surface transparency",
+      "native composer z-index",
+      "settings portal detection",
+      "in-place composer marker reconciliation for stable native range drags"
+    ],
+    "voicePackageSha256": "9391bb3f905d8910b1daf1248468672d52ccbbe78021a8ce31cab9fcbcebbac0"
+  }
+}

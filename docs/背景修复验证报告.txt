@@ -1,0 +1,227 @@
+﻿Fairy UI 1.1.2 背景与输入区修复验证
+日期：2026-10-09
+目标：Windows x64 / DeepSeek Harness 0.2.0-rc.2 / Git graph 0.4.5
+插件：Visual 1.1.2；Voice 1.1.1 与 Orb 1.1.0 不变。
+
+结果：共 184 项通过，失败 0 项；浏览器与安装器 175 项，源码/轻量 DOM 单元测试 9 项。
+覆盖浅/深色渐变网格、新建及已有对话、H.D.D 开关、完整 reload、代码工具栏复制与输入点击、设置弹窗遮罩、流式滚动、分支菜单、快速鼠标音量拖动和保存。
+使用最终 tgz 的实际安装结果，没有在安装包测试中偷偷替换 UI 源码；三个官方 desktop 模块的加载已记录。
+浏览器与控制台错误均为 0；mock Voice，无真实 TTS 调用。
+
+最终源码 UI + Voice / web 客户端：34 项通过
+  1. [passed] Git workspace/branch/preset non-overlap @1600
+  2. [passed] Git workspace/branch/preset non-overlap @980
+  3. [passed] Git workspace/branch/preset non-overlap @800
+  4. [passed] Git workspace/branch/preset non-overlap @700
+  5. [passed] three right-hand controls visible and independent
+  6. [passed] keyboard volume changes persist with TTS stopped
+  7. [passed] mouse volume drag works and saves while TTS is offline
+  8. [passed] rapid hover/drags preserve live range layout markers and persist volume
+  9. [passed] Git branch popover opens, filters and closes
+  10. [passed] Voice UI remains mounted when HDD is disabled
+  11. [passed] HDD off removes gradient host
+  12. [passed] HDD off/on does not duplicate Voice controllers
+  13. [passed] HDD on mounts exactly one gradient host
+  14. [passed] workspace switch handles long labels and retains controls
+  15. [passed] gradient unobscured: hero-light
+  16. [passed] first reply removes stale Git projection and keeps controls
+  17. [passed] gradient unobscured: active-light
+  18. [passed] gradient unobscured: active-dark
+  19. [passed] gradient unobscured: active-light-restored
+  20. [passed] code toolbar does not obscure input: yaml-top
+  21. [passed] code toolbar does not obscure input: yaml-over-input
+  22. [passed] editor remains clickable and editable across YAML banner
+  23. [passed] code toolbar does not obscure input: yaml-sticky
+  24. [passed] visible code toolbar copy button works
+  25. [passed] code toolbar does not obscure input: yaml-bottom
+  26. [passed] code toolbar does not obscure input: yaml-narrow-980
+  27. [passed] code toolbar does not obscure input: yaml-narrow-800
+  28. [passed] settings modal/backdrop stays above composer
+  29. [passed] code toolbar does not obscure input: after-settings-dismiss
+  30. [passed] gradient unobscured: active-after-hdd-cycle
+  31. [passed] streaming reply preserves user scroll position
+  32. [passed] gradient unobscured: active-after-app-reload
+  33. [passed] application reload remounts one background host without duplicate controls
+  34. [passed] no browser errors and no TTS inference
+
+最终源码 / 三个官方 desktop 客户端模块：34 项通过
+  1. [passed] Git workspace/branch/preset non-overlap @1600
+  2. [passed] Git workspace/branch/preset non-overlap @980
+  3. [passed] Git workspace/branch/preset non-overlap @800
+  4. [passed] Git workspace/branch/preset non-overlap @700
+  5. [passed] three right-hand controls visible and independent
+  6. [passed] keyboard volume changes persist with TTS stopped
+  7. [passed] mouse volume drag works and saves while TTS is offline
+  8. [passed] rapid hover/drags preserve live range layout markers and persist volume
+  9. [passed] Git branch popover opens, filters and closes
+  10. [passed] Voice UI remains mounted when HDD is disabled
+  11. [passed] HDD off removes gradient host
+  12. [passed] HDD off/on does not duplicate Voice controllers
+  13. [passed] HDD on mounts exactly one gradient host
+  14. [passed] workspace switch handles long labels and retains controls
+  15. [passed] gradient unobscured: hero-light
+  16. [passed] first reply removes stale Git projection and keeps controls
+  17. [passed] gradient unobscured: active-light
+  18. [passed] gradient unobscured: active-dark
+  19. [passed] gradient unobscured: active-light-restored
+  20. [passed] code toolbar does not obscure input: yaml-top
+  21. [passed] code toolbar does not obscure input: yaml-over-input
+  22. [passed] editor remains clickable and editable across YAML banner
+  23. [passed] code toolbar does not obscure input: yaml-sticky
+  24. [passed] visible code toolbar copy button works
+  25. [passed] code toolbar does not obscure input: yaml-bottom
+  26. [passed] code toolbar does not obscure input: yaml-narrow-980
+  27. [passed] code toolbar does not obscure input: yaml-narrow-800
+  28. [passed] settings modal/backdrop stays above composer
+  29. [passed] code toolbar does not obscure input: after-settings-dismiss
+  30. [passed] gradient unobscured: active-after-hdd-cycle
+  31. [passed] streaming reply preserves user scroll position
+  32. [passed] gradient unobscured: active-after-app-reload
+  33. [passed] application reload remounts one background host without duplicate controls
+  34. [passed] no browser errors and no TTS inference
+  加载的官方桌面模块：dsh-client-ui-agent-preset, dsh-client-ui-conversation, dsh-client-ui-workspace
+
+仅 UI 插件，不安装 Voice：29 项通过
+  1. [passed] Git workspace/branch/preset non-overlap @1600
+  2. [passed] Git workspace/branch/preset non-overlap @980
+  3. [passed] Git workspace/branch/preset non-overlap @800
+  4. [passed] Git workspace/branch/preset non-overlap @700
+  5. [passed] standalone Visual eye controls visible and independent
+  6. [passed] Git branch popover opens, filters and closes
+  7. [passed] HDD off removes gradient host
+  8. [passed] HDD on mounts exactly one gradient host
+  9. [passed] workspace switch handles long labels and retains controls
+  10. [passed] gradient unobscured: hero-light
+  11. [passed] first reply removes stale Git projection and keeps controls
+  12. [passed] gradient unobscured: active-light
+  13. [passed] gradient unobscured: active-dark
+  14. [passed] gradient unobscured: active-light-restored
+  15. [passed] code toolbar does not obscure input: yaml-top
+  16. [passed] code toolbar does not obscure input: yaml-over-input
+  17. [passed] editor remains clickable and editable across YAML banner
+  18. [passed] code toolbar does not obscure input: yaml-sticky
+  19. [passed] visible code toolbar copy button works
+  20. [passed] code toolbar does not obscure input: yaml-bottom
+  21. [passed] code toolbar does not obscure input: yaml-narrow-980
+  22. [passed] code toolbar does not obscure input: yaml-narrow-800
+  23. [passed] settings modal/backdrop stays above composer
+  24. [passed] code toolbar does not obscure input: after-settings-dismiss
+  25. [passed] gradient unobscured: active-after-hdd-cycle
+  26. [passed] streaming reply preserves user scroll position
+  27. [passed] gradient unobscured: active-after-app-reload
+  28. [passed] application reload remounts one background host without duplicate controls
+  29. [passed] no browser errors and no TTS inference
+
+实际安装的最终 tgz / web 客户端：34 项通过
+  1. [passed] Git workspace/branch/preset non-overlap @1600
+  2. [passed] Git workspace/branch/preset non-overlap @980
+  3. [passed] Git workspace/branch/preset non-overlap @800
+  4. [passed] Git workspace/branch/preset non-overlap @700
+  5. [passed] three right-hand controls visible and independent
+  6. [passed] keyboard volume changes persist with TTS stopped
+  7. [passed] mouse volume drag works and saves while TTS is offline
+  8. [passed] rapid hover/drags preserve live range layout markers and persist volume
+  9. [passed] Git branch popover opens, filters and closes
+  10. [passed] Voice UI remains mounted when HDD is disabled
+  11. [passed] HDD off removes gradient host
+  12. [passed] HDD off/on does not duplicate Voice controllers
+  13. [passed] HDD on mounts exactly one gradient host
+  14. [passed] workspace switch handles long labels and retains controls
+  15. [passed] gradient unobscured: hero-light
+  16. [passed] first reply removes stale Git projection and keeps controls
+  17. [passed] gradient unobscured: active-light
+  18. [passed] gradient unobscured: active-dark
+  19. [passed] gradient unobscured: active-light-restored
+  20. [passed] code toolbar does not obscure input: yaml-top
+  21. [passed] code toolbar does not obscure input: yaml-over-input
+  22. [passed] editor remains clickable and editable across YAML banner
+  23. [passed] code toolbar does not obscure input: yaml-sticky
+  24. [passed] visible code toolbar copy button works
+  25. [passed] code toolbar does not obscure input: yaml-bottom
+  26. [passed] code toolbar does not obscure input: yaml-narrow-980
+  27. [passed] code toolbar does not obscure input: yaml-narrow-800
+  28. [passed] settings modal/backdrop stays above composer
+  29. [passed] code toolbar does not obscure input: after-settings-dismiss
+  30. [passed] gradient unobscured: active-after-hdd-cycle
+  31. [passed] streaming reply preserves user scroll position
+  32. [passed] gradient unobscured: active-after-app-reload
+  33. [passed] application reload remounts one background host without duplicate controls
+  34. [passed] no browser errors and no TTS inference
+
+实际安装的最终 tgz / 三个官方 desktop 客户端模块：34 项通过
+  1. [passed] Git workspace/branch/preset non-overlap @1600
+  2. [passed] Git workspace/branch/preset non-overlap @980
+  3. [passed] Git workspace/branch/preset non-overlap @800
+  4. [passed] Git workspace/branch/preset non-overlap @700
+  5. [passed] three right-hand controls visible and independent
+  6. [passed] keyboard volume changes persist with TTS stopped
+  7. [passed] mouse volume drag works and saves while TTS is offline
+  8. [passed] rapid hover/drags preserve live range layout markers and persist volume
+  9. [passed] Git branch popover opens, filters and closes
+  10. [passed] Voice UI remains mounted when HDD is disabled
+  11. [passed] HDD off removes gradient host
+  12. [passed] HDD off/on does not duplicate Voice controllers
+  13. [passed] HDD on mounts exactly one gradient host
+  14. [passed] workspace switch handles long labels and retains controls
+  15. [passed] gradient unobscured: hero-light
+  16. [passed] first reply removes stale Git projection and keeps controls
+  17. [passed] gradient unobscured: active-light
+  18. [passed] gradient unobscured: active-dark
+  19. [passed] gradient unobscured: active-light-restored
+  20. [passed] code toolbar does not obscure input: yaml-top
+  21. [passed] code toolbar does not obscure input: yaml-over-input
+  22. [passed] editor remains clickable and editable across YAML banner
+  23. [passed] code toolbar does not obscure input: yaml-sticky
+  24. [passed] visible code toolbar copy button works
+  25. [passed] code toolbar does not obscure input: yaml-bottom
+  26. [passed] code toolbar does not obscure input: yaml-narrow-980
+  27. [passed] code toolbar does not obscure input: yaml-narrow-800
+  28. [passed] settings modal/backdrop stays above composer
+  29. [passed] code toolbar does not obscure input: after-settings-dismiss
+  30. [passed] gradient unobscured: active-after-hdd-cycle
+  31. [passed] streaming reply preserves user scroll position
+  32. [passed] gradient unobscured: active-after-app-reload
+  33. [passed] application reload remounts one background host without duplicate controls
+  34. [passed] no browser errors and no TTS inference
+  加载的官方桌面模块：dsh-client-ui-agent-preset, dsh-client-ui-conversation, dsh-client-ui-workspace
+
+Windows PowerShell 5.1 修复安装器：10 项通过
+  1. [passed] old UI 1.1.1, Git graph and inert existing dsh-orb fixture ready
+  2. [passed] CheckOnly accepts existing dsh-orb and makes no metadata or backup changes
+  3. [passed] missing TargetClosed safely refuses installation without writes
+  4. [passed] installed UI and Voice import in clean Node without runtime dependency fallbacks
+  5. [passed] closed-target installation updates UI, installs Voice and preserves Orb, Git and patch
+  6. [passed] repeat installation keeps exactly one UI and one Voice bundle
+  7. [passed] backup contains package-manager metadata only, no patch, sessions or credentials
+  8. [passed] corrupt archive is refused before backup or install
+  9. [passed] manual duplicate Voice mount refused without editing user patch
+  10. [passed] browser fixture uses the exact bundles installed by the desktop repair script
+
+源码契约与轻量 DOM 标记协调测试：9 项通过
+  1. [passed] client and IIFE ship the same fix
+  2. [passed] desktop and web conversation slots are both supported
+  3. [passed] transparent main phase is scoped to Fairy HDD mode
+  4. [passed] current active or hero phase receives the semantic background marker
+  5. [passed] composer outranks sticky code banners but stays behind modal backdrop
+  6. [passed] settings adapter recognizes official portal and legacy sidebar dialog
+  7. [passed] only Visual is bumped; Voice and Orb versions remain unchanged
+  8. [passed] rebinding unchanged controls does not remove or rewrite live layout markers
+  9. [passed] reconciliation removes obsolete markers and cleanup preserves unrelated attributes
+
+附加验证：24 个 JavaScript 文件语法通过；tgz/源码/仓库逐文件字节一致；离线依赖完整；安装脚本三份一致；Voice 包不变；文档 Windows 路径和控制字符检查通过；敏感模式扫描通过。
+
+验证边界：
+- 未替换、停止或重启用户正在运行的 Fairy / DeepSeek Harness，未改聊天数据。
+- 测试使用隔离 DSH_HOME、本地 mock 模型与 mock Voice；真实 TTS 调用为 0，未执行真实音频播放或 GPU 推理。
+- 桌面兼容性测试将三个官方 desktop 客户端模块加载到隔离 web host，不等于完整 Electron 整机验收。
+- Voice 1.1.1 包与此前公开版本逐字节不变；Orb 1.1.0、默认 agent、语音模型及本地环境不变。
+- 仅验证 Windows x64 / DSH 0.2.0-rc.2；不保证其他版本、所有第三方皮肤组合或所有崩溃问题都已解决。
+- H.D.D 开关关闭时不显示渐变网格是预期行为；右侧音量 UI 可离线设置，但不代表 TTS 已启动。
+- 敏感文件名与常见密钥模式扫描不等于可识别所有形式的秘密。
+
+核心文件 SHA256：
+84742adcfedc360a05eb97fdbd0a8ed42ce272f020a8153bd031bda0a77d2f9c  dsh-fairy-visual-1.1.2.tgz
+9391bb3f905d8910b1daf1248468672d52ccbbe78021a8ce31cab9fcbcebbac0  dsh-fairy-voice-1.1.1.tgz
+f410013e64909b96a3cdc8ad5907b01bda242f713317a44f8ad26e709ba3521e  修复安装.ps1
+
+报告不含用户聊天、账号或语音配置。完整包内文件校验和见 SHA256SUMS.txt。

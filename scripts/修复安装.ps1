@@ -8,7 +8,7 @@ param(
 )
 $ErrorActionPreference='Stop'
 $oldHome=$env:DSH_HOME
-$wanted=@{ 'dsh-fairy-visual'='1.1.1'; 'dsh-fairy-voice'='1.1.1' }
+$wanted=@{ 'dsh-fairy-visual'='1.1.2'; 'dsh-fairy-voice'='1.1.1' }
 function Get-PackageSHA256([string]$LiteralPath) {
   # Use .NET directly: Windows PowerShell launched from PS7 can inherit a
   # module search path where Get-FileHash is unavailable. No modules needed.
@@ -70,11 +70,11 @@ try {
     $packages+=$p
   }
   Write-Host "目标 DSH_HOME：$homePath"
-  Write-Host "目标 profile：$Profile；DSH：$version；UI/Voice：1.1.1"
+  Write-Host "目标 profile：$Profile；DSH：$version；UI：1.1.2 / Voice：1.1.1"
   if ($CheckOnly) { Write-Host '检查通过；未创建目录、备份、安装或启动任何服务。'; return }
   if (!$TargetClosed) { throw '请先正常退出目标 DSH/Fairy，再添加 -TargetClosed 执行安装。本脚本不会结束或重启用户程序。仅检查请使用 -CheckOnly。' }
   if (Test-Path -LiteralPath $profilePath) {
-    $backup=Join-Path $profilePath ('backups\fairy-controls-1.1.1-'+(Get-Date -Format yyyyMMdd-HHmmss-fff))
+    $backup=Join-Path $profilePath ('backups\fairy-background-1.1.2-'+(Get-Date -Format yyyyMMdd-HHmmss-fff))
     New-Item -ItemType Directory -Path $backup -Force | Out-Null
     foreach($file in @('package.json','pnpm-lock.yaml','pnpm-workspace.yaml')) {
       $p=Join-Path $profilePath $file
@@ -97,7 +97,8 @@ try {
   foreach($name in $beforeBundles) {
     if (@($after.dsh.profile.bundles) -notcontains $name) { throw "原 bundle 意外丢失，请查看元数据备份：$name" }
   }
-  Write-Host '修复安装完成：Fairy UI 1.1.1 + Fairy Voice 1.1.1。原悬浮窗及其他插件已保留。'
+  Write-Host '修复安装完成：Fairy UI 1.1.2 + Fairy Voice 1.1.1。原悬浮窗及其他插件已保留。'
   Write-Host '请用原来的方式重新打开目标 DSH。音量在输入框右侧最上方；朗读服务还需在“朗读”设置中配置。'
+  Write-Host '重新打开后请确认右上 H.D.D 已开启；新会话和已有对话均应显示渐变网格背景。'
   Write-Host '不需要重新下载语音模型；本脚本没有启动 TTS 或 DSH。若使用自定义 DSH_HOME，重新启动时也要使用同一目录。'
 } finally { $env:DSH_HOME=$oldHome }

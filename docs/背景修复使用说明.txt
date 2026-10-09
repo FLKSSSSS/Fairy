@@ -1,0 +1,120 @@
+﻿Fairy 背景与输入区修复包 — 使用说明
+版本：Fairy UI 1.1.2 / Fairy Voice 1.1.1（不变）
+日期：2026-10-09
+适用：Windows x64 / DeepSeek Harness 0.2.0-rc.2 独立 bundle 插件配置
+
+一、本次修复什么
+1. 修复官方桌面版进入对话后渐变、网格背景被不透明面板遮住的问题。
+   同时适配 main.conversation 和 web conversation，覆盖新会话、已有对话和浅/深色主题。
+2. 修复 YAML 等代码块粘性工具栏盖在输入框上，保留复制按钮，不删除工具栏。
+3. 兼容官方 Settings portal：设置弹窗遮罩保持在输入框之上，关闭设置后恢复。
+4. 修复移到音量条上立即拖动时，提示引起布局标记重建、拖动被中断的问题。
+5. 保留此前 master 与日常对话分行、分支菜单、右侧三个条和流式回复滚动保护。
+
+二、包内文件与无需重新下载的内容
+- dsh-fairy-visual-1.1.2.tgz：本次 UI 插件更新，含所需 Node 依赖。
+- dsh-fairy-voice-1.1.1.tgz：原 Voice 1.1.1 的逐字节副本；已安装时版本不变。
+- 修复安装.ps1：使用官方插件管理器更新上述两个 bundle。
+- 使用说明.txt、背景修复验证报告.txt/.json、构建信息.json、效果图、SHA256SUMS.txt。
+
+这不是完整 DeepSeek Harness 安装程序，不包含 DSH、Python、GPU 驱动和语音模型。
+已有 F:\fairy音频依赖 或其他目录的语音环境、模型不用重下，不由本脚本修改。
+不安装/替换/启动 Orb；保留已有 dsh-orb / dsh-fairy-orb 和其他声明的插件依赖。
+不改变主窗口默认 agent、不迁移聊天，不复制账号、API Key、会话或 voice-brain.json。
+GitHub 自动生成的 Source code ZIP 不含打包依赖，不等于此发行包。
+请下载 Fairy-Background-Fix-1.1.2-Windows-x64.zip 并完整解压，不要在压缩包内直接运行脚本。
+
+三、先确认目标数据目录（非常重要）
+安装目录和 DSH_HOME 不是一回事，脚本不会自动猜测正在运行的程序用了哪个数据目录。
+默认 DSH_HOME 为当前用户的 %USERPROFILE%\.dsh，默认 profile 为 desktop。
+若原启动器设置了 DSH_HOME，请使用同一个目录；命令行 web 通常要指定 -Profile web。
+可以只读查看当前 PowerShell 环境：
+  $env:DSH_HOME
+此值为空不代表其他进程也没有自定义目录，请核对原启动脚本/程序的数据设置。
+目标 profile 通常位于：<DSH_HOME>\profiles\desktop 或 <DSH_HOME>\profiles\web。
+不要把 E:\DSH 程序目录或 F:\fairy音频依赖 当作数据目录，除非原启动器明确这样设置。
+脚本若找不到 desktop profile 会拒绝安装，而不是静默创建一个错误的桌面配置。
+
+四、推荐安装步骤（先检查，再正常退出，再更新）
+下面示例假设解压到 F:\Fairy背景修复，DSH 位于 E:\DSH。
+请按你的实际位置修改路径，不需要为了执行脚本永久修改系统执行策略。
+
+1. 在 PowerShell 执行只读检查：
+  powershell -NoProfile -ExecutionPolicy Bypass -File 'F:\Fairy背景修复\修复安装.ps1' -DshCommand 'E:\DSH\resources\runtime\cli\bin\dsh.cmd' -CheckOnly
+
+2. 检查输出的 DSH_HOME/profile 是否正是你使用的目标。
+   -CheckOnly 不创建目录/备份，不安装，不启动 DSH 或 TTS。
+
+3. 正常退出要更新的 DSH/Fairy，包括托盘中仍驻留的目标主程序。
+   如悬浮窗仍连接这个目标，先通过它原来的退出方式关闭，避免仍在使用旧 bundle。
+   脚本不会杀进程，也无法代替你确认目标确实关闭。
+
+4. 对同一个目标执行更新：
+  powershell -NoProfile -ExecutionPolicy Bypass -File 'F:\Fairy背景修复\修复安装.ps1' -DshCommand 'E:\DSH\resources\runtime\cli\bin\dsh.cmd' -TargetClosed
+
+5. 等待“修复安装完成：Fairy UI 1.1.2 + Fairy Voice 1.1.1”。
+   官方插件管理器可能需要访问网络准备目标 profile 的依赖；失败时查看终端报错。
+   通过原来方式重新打开 DSH，不要另启动一套数据目录。
+
+自定义 DSH_HOME 示例（两条命令必须同一目录）：
+  powershell -NoProfile -ExecutionPolicy Bypass -File 'F:\Fairy背景修复\修复安装.ps1' -DshCommand 'E:\DSH\resources\runtime\cli\bin\dsh.cmd' -DshHome 'F:\我的DSH数据' -Profile desktop -CheckOnly
+  powershell -NoProfile -ExecutionPolicy Bypass -File 'F:\Fairy背景修复\修复安装.ps1' -DshCommand 'E:\DSH\resources\runtime\cli\bin\dsh.cmd' -DshHome 'F:\我的DSH数据' -Profile desktop -TargetClosed
+
+命令行 web 示例（DSH 的 CLI 已在 PATH）：
+  powershell -NoProfile -ExecutionPolicy Bypass -File 'F:\Fairy背景修复\修复安装.ps1' -DshCommand dsh -DshHome 'F:\我的DSH数据' -Profile web -CheckOnly
+  powershell -NoProfile -ExecutionPolicy Bypass -File 'F:\Fairy背景修复\修复安装.ps1' -DshCommand dsh -DshHome 'F:\我的DSH数据' -Profile web -TargetClosed
+
+-DshHome 只在脚本执行时设置，结束后还原；重新启动时也要沿用原来相同的 DSH_HOME。
+若使用 E:\Fairy 的旧整合版，不要直接覆盖其 resources 或手工复制本包到 node_modules。
+脚本检测到旧 dsh-fairy-runtime/startup、非 bundle UI/Voice 或手写同名挂载会拒绝安装。
+需要先确认原整合版结构；不要为绕过检查而删除配置或卸载其他插件。
+
+五、如何开启背景与三个横条
+1. 在主窗口右上角找到 H.D.D（Hollow Deep Dive）开关并开启。
+   H.D.D 关闭时没有 Fairy 渐变、网格和眼睛外观是正常行为。
+2. 右侧相邻主题按钮可以切换浅色/深色；两种主题都应该有渐变和网格。
+3. 打开新会话，发送一条消息。进入实际对话后背景仍应可见；重开应用后不重复叠加背景。
+4. H.D.D 模式下输入区右侧三个横条从上到下为：
+   - 语音音量：鼠标拖动调整；聚焦后可用方向键、Home/End。声音值保存在本地偏好。
+   - 眼睛大小：改变主窗口动态大眼睛的大小。
+   - 动画速度：改变主窗口眼睛动画速度。
+   只单装 UI 时仅有后两个；第一条由 Voice 提供，安装器会补装/保留 Voice 1.1.1。
+5. 音量条可在 TTS 未启动时预设。能看到音量条不等于语音模型已运行。
+6. 语音朗读沿用“设置 -> 朗读”中的原服务地址、参考音频、模型和自动朗读偏好。
+   使用原来的本地语音环境启动方式；本修复包不启动 TTS、不使用 GPU，不需要重装模型。
+
+六、若仍然没有背景
+- 先确认右上 H.D.D 已开启，关闭再开启一次观察；不需要删除本地存储/聊天。
+- 通过插件管理页或目标 profile 的 node_modules/dsh-fairy-visual/package.json 确认是 1.1.2。
+- 若仍是 1.1.1，通常是安装到了其他 DSH_HOME/profile，或旧进程还没有退出。
+- desktop 默认不是 web。安装和启动的数据目录/profile 必须一致。
+- 安装完成后完整退出并重新打开目标；不要只在旧页面中刷新后就认定安装生效。
+- 若已确认版本和开关，但其他皮肤/自定义 CSS 仍绘制不透明面板，可用原管理方式暂时关闭该皮肤复测。
+  不要删除它的文件，也不要卸载全部插件来排错。
+- 新版本有意保留输入框、菜单、弹窗本身的材质/遮罩，不会把所有面板都强制透明。
+- 如需要反馈，请提供 H.D.D 状态、版本、profile、截图及脱敏错误信息；不要发送 API Key 或聊天数据库。
+
+七、安装拒绝/报错的处理
+- “缺少文件”或“SHA256 校验失败”：重新完整解压发行 ZIP；不要跳过校验。
+- “手动挂载”或“非 bundle”：原配置可能同时手工加载 UI/Voice，不应再挂载第二份。
+  脚本不会擅自删 patch。先核对原配置来源，再按官方管理方式整理，勿盲目删除整份 patch。
+- 找不到 DSH CLI：为 -DshCommand 提供真实的 dsh.cmd 路径，而非 GUI exe。
+- DSH 版本不匹配：本包针对 0.2.0-rc.2 验证，不保证其他版本的 DOM/安装器行为。
+- 官方插件管理器失败：保留错误信息，检查网络与目标路径。脚本不会自动回滚聊天数据或继续宣称成功。
+- 音量 UI 出现但没有声音：检查原 TTS 服务及朗读设置，这是语音运行环境问题，不是背景开关问题。
+
+八、备份、安全与恢复边界
+实际安装前，在目标 profile/backups/fairy-background-1.1.2-<时间> 下备份 package.json、
+pnpm-lock.yaml、pnpm-workspace.yaml（存在的项目）；只备份插件管理元数据。
+不备份/打印/复制用户 patch、账号、会话、语音配置；不会删除原悬浮窗或其他插件声明。
+备份不是完整数据备份。安装出错时不要把元数据直接覆盖回运行中的目标。
+如确实需要退回 UI 1.1.1，可在关闭目标后使用官方插件管理器安装旧 Release 中的 UI tgz，
+Voice 1.1.1 本次逐字节不变，无须为回退而重下语音模型。旧 controls-v1.1.1 Release 保留。
+
+九、验证范围
+已用隔离 DSH_HOME、无头 Edge、模拟模型和模拟语音接口测试源代码、实际已安装的 tgz、
+三个官方桌面客户端模块和 Windows PowerShell 5.1 安装器；详见背景修复验证报告。
+包含浅/深色主题、首条回复、代码块与输入区交叠、复制、弹窗遮罩、H.D.D 开关、重开、
+右侧控件、快速鼠标音量拖动、键盘保存、分支/工作区、流式回复不跳动。
+本次未替你直接安装到正在运行的 Fairy；未运行真实 TTS/GPU、真实 Orb 或实际 Electron 整机验收。
+这不代表已解决所有崩溃、所有第三方皮肤组合或所有 DSH 版本的问题。
